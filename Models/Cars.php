@@ -29,13 +29,15 @@ class Annonce
     ) {
 
         $this->id = $id;
-        $this->typeVoiture = $typeVoiture;
-        $this->marque = $marque;
-        $this->puissance = $puissance;
-        $this->annee = $annee;
-        $this->description = $description;
-        $this->prix = $prix;
+        $this->setTypeVoiture($typeVoiture);
+        $this->setMarque($marque);
+        $this->setPuissance($puissance);
+        $this->setAnnee($annee);
+        $this->setDescritpion($description);
+        $this->setPrix($prix);
     }
+
+
 
     public function getId()
     {
@@ -106,5 +108,17 @@ class Annonce
     public function setPrix($prix)
     {
         $this->prix = $prix;
+    }
+
+
+    public function showAll()
+    {
+        echo "<p>" . $this->id . "</p>";
+        echo "<p>" . $this->typeVoiture . "</p>";
+        echo "<p>" . $this->marque . "</p>";
+        echo "<p>" . $this->puissance . "</p>";
+        echo "<p>" . $this->annee . "</p>";
+        echo "<p>" . $this->description . "</p>";
+        echo "<p>" . $this->prix . "</p>";
     }
 }

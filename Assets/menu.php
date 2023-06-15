@@ -7,7 +7,7 @@
     <title>menu</title>
     <link rel="stylesheet" type="home/css" href="../Style/home.css" />
     <a href="/DollarCars/Acceuil/indexHome.php">Acceuil</a>
-    <a href="/Models/Cars.php">Voitures</a>
+
 </head>
 
 <body>

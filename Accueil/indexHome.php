@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" type="home/css" href="../Style/home.css" />
+
+    <link rel="stylesheet" href="../Style/home.css" />
     <a href="/DollarCars/Acceuil/indexHome.php">Acceuil</a>
-    <a href="/Models/Cars.php">Voitures</a>
 
 </head>
 
@@ -41,22 +41,24 @@
 
     use DollarCars\Models\Cars;
 
-    if ($_SERVER) {
-        $publiAnnonce = $new(
-            $_POST["id"],
-            $_POST["nom"],
-            $_POST["prenom"],
-            $_POST["mail"],
-            $_POST["typeVoiture"],
-            $_POST["marque"],
-            $_POST["puissance"],
-            $_POST["annee"],
-            $_POST["kilometrage"],
-            $_POST["carburant"],
-            $_POST["description"]
-
-        );
-        $publiAnnonce->displayAnnonce();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_POST["mail"] != null) {
+            $publication = new Cars(
+                $_POST["id"],
+                $_POST["nom"],
+                $_POST["prenom"],
+                $_POST["mail"],
+                $_POST["typeVoiture"],
+                $_POST["marque"],
+                $_POST["puissance"],
+                $_POST["annee"],
+                $_POST["kilometrage"],
+                $_POST["carburant"],
+                $_POST["description"]
+            );
+            $publiAnnonce->displayAnnonce();
+            $publiAnnonce->showAll();
+        }
     } ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
 </body>
