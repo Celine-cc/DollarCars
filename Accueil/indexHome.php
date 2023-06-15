@@ -34,32 +34,30 @@
             <input type="submit" value="PUBLIER">
         </form>
     </div>
+    <?php
 
+    include_once __DIR__ . "\DollarCars\Models\Cars.php";
+
+    use DollarCars\Models\Cars;
+
+    if ($_SERVER) {
+        $publiAnnonce = $new(
+            $_POST["id"],
+            $_POST["nom"],
+            $_POST["prenom"],
+            $_POST["mail"],
+            $_POST["typeVoiture"],
+            $_POST["marque"],
+            $_POST["puissance"],
+            $_POST["annee"],
+            $_POST["kilometrage"],
+            $_POST["carburant"],
+            $_POST["description"]
+
+        );
+        $publiAnnonce->displayAnnonce();
+    } ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
 </body>
 
 </html>
-
-<?php
-
-include_once __DIR__ . "\DollarCars\Models\Annonce.php";
-
-use DollarCars\Models\Annonce;
-
-if ($_SERVER) {
-    $publiAnnonce = $newAnnonce(
-        $_POST["id"],
-        $_POST["nom"],
-        $_POST["prenom"],
-        $_POST["mail"],
-        $_POST["typeVoiture"],
-        $_POST["marque"],
-        $_POST["puissance"],
-        $_POST["annee"],
-        $_POST["kilometrage"],
-        $_POST["carburant"],
-        $_POST["description"]
-
-    );
-    $publiAnnonce->displayAnnonce();
-}
