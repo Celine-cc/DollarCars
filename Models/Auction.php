@@ -2,7 +2,6 @@
 
 namespace Models;
 
-
 use PDO;
 
 class Auction
@@ -51,7 +50,7 @@ class Auction
         $query = $dbh->prepare("SELECT * FROM auctions");
         $query->execute();
 
-        $articles = [];
+        $auctions = [];
 
         if (is_a($query, "PDOStatement")) {
             $results = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -61,7 +60,7 @@ class Auction
             }
         }
 
-        return $articles;
+        return $auctions;
     }
 
     // public function displayAuction()

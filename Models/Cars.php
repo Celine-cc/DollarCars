@@ -6,7 +6,7 @@ include_once __DIR__ . "\DollarCars\Accueil\indexHome.php";
 
 use PDO;
 
-class Annonce
+class Car
 
 {
     protected int $id;
