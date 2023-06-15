@@ -9,13 +9,13 @@ use PDO;
 class Annonce
 
 {
-    protected $id;
-    protected $typeVoiture;
-    protected $marque;
-    protected $puissance;
-    protected $annee;
-    protected $description;
-    protected $prix;
+    protected int $id;
+    protected string $typeVoiture;
+    protected string $marque;
+    protected int $puissance;
+    protected int $annee;
+    protected string $description;
+    protected float $prix;
 
 
     public function __construct(
@@ -36,11 +36,75 @@ class Annonce
         $this->description = $description;
         $this->prix = $prix;
     }
-    public function annonce()
+
+    public function getId()
     {
+        return $this->id;
     }
 
-    public function __get($donnees)
+
+    public function getTypeVoiture()
     {
+        return $this->typeVoiture;
+    }
+    public function setTypeVoiture($typeVoiture)
+    {
+        $this->typeVoiture = $typeVoiture;
+    }
+
+
+
+    public function getmarque()
+    {
+        return $this->marque;
+    }
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+    }
+
+
+
+    public function getPuissance()
+    {
+        return $this->puissance;
+    }
+
+    public function setPuissance($puissance)
+    {
+        $this->id = $puissance;
+    }
+
+
+
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+    }
+
+
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function setDescritpion($description)
+    {
+        $this->description = $description;
+    }
+
+
+
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
     }
 }
