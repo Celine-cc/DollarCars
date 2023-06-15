@@ -1,6 +1,8 @@
 body {
-  background-image: url(fond.jpg);
+  color: rgb(29, 35, 20);
+  background-image: url("../Style/fond.jpg");
 }
+
 footer {
   background-color: green;
   display: flex;
@@ -13,6 +15,12 @@ form {
   flex-direction: column;
   gap: 0.5rem;
   justify-content: center;
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 .annonce {

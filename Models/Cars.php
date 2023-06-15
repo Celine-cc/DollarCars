@@ -6,7 +6,7 @@ include_once __DIR__ . "\DollarCars\Accueil\indexHome.php";
 
 use PDO;
 
-class Annonce
+class Car
 
 {
     protected int $id;
@@ -113,12 +113,12 @@ class Annonce
 
     public function showAll()
     {
-        echo "<p>" . $this->id . "</p>";
-        echo "<p>" . $this->typeVoiture . "</p>";
-        echo "<p>" . $this->marque . "</p>";
-        echo "<p>" . $this->puissance . "</p>";
-        echo "<p>" . $this->annee . "</p>";
-        echo "<p>" . $this->description . "</p>";
-        echo "<p>" . $this->prix . "</p>";
+        echo "<p>" . $this->getPrix() . "</p>";
+        echo "<p>" . $this->getTypeVoiture() . "</p>";
+        echo "<p>" . $this->getMarque() . "</p>";
+        echo "<p>" . $this->getPuissance() . "</p>";
+        echo "<p>" . $this->getAnnee() . "</p>";
+        echo "<p>" . $this->getDescription() . "</p>";
+        echo "<p>" . $this->getPrix() . "</p>";
     }
 }

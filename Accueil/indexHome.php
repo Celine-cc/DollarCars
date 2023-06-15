@@ -5,60 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-
     <link rel="stylesheet" href="../Style/home.css" />
-    <a href="/DollarCars/Acceuil/indexHome.php">Acceuil</a>
-
 </head>
 
 <body>
-    <menu>
-    </menu>
-    <p class="entete">
-    <h1><strong><i>Dollar Cars $</i></strong></h1>
+    <header>
+        <menu>
+            <a href="../Accueil/indexHome.php">Accueil</a>
+            <a href="../Accueil/indexLogin.php">Login</a>
+            <a href="../Accueil/indexRegister.php">Register</a>
+        </menu>
+
+        <h1>
+            <strong><i>Dollar Cars $</i></strong>
+        </h1>
+    </header>
+
     <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
         <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
-    </p>
     </p>
 
     <p><strong>Déposez ici votre annonce</strong></p>
 
     <div class="formContainer">
         <form action="/Accueil/indexHome.php" method="POST">
-            <input type="text" id="typevoiture" name="typevoiture" placeholder="Modèle de voiture" required />
-            <input type="text" id="marque" name="marque" placeholder="Marque" required />
-            <input type="number" id="puissance" name="puissance" placeholder="Puissance" required />
-            <input type="date" id="annee" name="annee" placeholder="Année" required />
-            <input type="number" id="kilometrage" name="kilometrage" placeholder="Kilometrage" required />
-            <input type="text" id="carburant" name="carburant" placeholder="Carburant" required />
+            <input type="text" id="typevoiture" name="model" placeholder="Modèle de voiture" required />
+            <input type="text" id="marque" name="brand" placeholder="Marque" required />
+            <input type="number" id="puissance" name="power" placeholder="Puissance (en CV)" required />
+            <input type="date" id="annee" name="year" placeholder="Année" required />
             <input type="text" id="description" name="description" placeholder="Description" required />
+            <input type="number" name="price" id="prix" placeholder="Prix de réserve (en €)" required>
             <input type="submit" value="PUBLIER">
         </form>
     </div>
     <?php
 
-    include_once __DIR__ . "\DollarCars\Models\Cars.php";
+    include_once __DIR__ . "\..\Models\Cars.php";
 
-    use DollarCars\Models\Cars;
+    use Models\Cars as Car;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if ($_POST["mail"] != null) {
-            $publication = new Cars(
-                $_POST["id"],
-                $_POST["nom"],
-                $_POST["prenom"],
-                $_POST["mail"],
-                $_POST["typeVoiture"],
-                $_POST["marque"],
-                $_POST["puissance"],
-                $_POST["annee"],
-                $_POST["kilometrage"],
-                $_POST["carburant"],
-                $_POST["description"]
-            );
-            $publiAnnonce->displayAnnonce();
-            $publiAnnonce->showAll();
-        }
+        $publiAnnonce = new Car(
+            $_POST["model"],
+            $_POST["brand"],
+            $_POST["power"],
+            $_POST["year"],
+            $_POST["description"],
+            $_POST["price"]
+        );
+        $publiAnnonce->displayAnnonce();
     } ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
 </body>
