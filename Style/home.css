@@ -1,7 +1,7 @@
 body {
-  background-image: url("/Style/fondvoiture.jpg");
-  color: white;
+  color: rgb(29, 35, 20);
   background-color: #000;
+  background-image: url(fond.jpg);
 }
 footer {
   background-color: green;

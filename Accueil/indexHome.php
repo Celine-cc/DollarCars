@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" type="text/css" href="../Style/home.css" />
+    <link rel="stylesheet" type="home/css" href="../Style/home.css" />
+    <a href="/DollarCars/Acceuil/indexHome.php">Acceuil</a>
+    <a href="/Models/Cars.php">Voitures</a>
 
 </head>
 
 <body>
     <menu>
-        <a href="/DollarCars/Acceuil/indexHome.php">Acceuil</a>
     </menu>
     <p class="entete">
     <h1><strong><i>Dollar Cars $</i></strong></h1>
