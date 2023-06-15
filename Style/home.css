@@ -1,3 +1,39 @@
 body {
-  background-image: url("fondvoiture.jpg");
+  background-image: url("/Style/fondvoiture.jpg");
+  color: white;
+  background-color: #000;
+}
+footer {
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  opacity: 60%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.annonce {
+  position: sticky;
+  position: -webkit-sticky;
+  background: green;
+  opacity: 50%;
+  width: 100px;
+  height: 100px;
+  top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px #000;
+  color: #fff;
+}
+
+.formContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
