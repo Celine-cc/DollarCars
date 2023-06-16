@@ -45,11 +45,13 @@
     include_once __DIR__ . "\..\Models\Annonce.php";
 
     use Models\Annonce;
+    use Models\Database;
     use Models\Encherir;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $publiAnnonce = new Annonce(
             null,
+            $dbh = Database::createDBConnection(),
             date("d-m-Y"),
             $_POST["dateFin"],
             $_POST["prixReserve"],
@@ -60,7 +62,9 @@
             $_POST["description"],
         );
 
-        $publiAnnonce->fetchSauv();
+        $publiAnnonce->sauvegarde();
+
+        $publiAnnonce->fetchSauv($dbh);
     }
 
 
