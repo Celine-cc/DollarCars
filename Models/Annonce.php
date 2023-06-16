@@ -11,6 +11,7 @@ class Annonce
 
 {
     protected int $id;
+    protected $dbh;
     protected $dateDebut;
     protected $dateFin;
     protected float $prixReserve;
@@ -22,6 +23,7 @@ class Annonce
 
     public function __construct(
         $id,
+        $dbh,
         $dateDebut,
         $dateFin,
         $prixReserve,
@@ -34,6 +36,7 @@ class Annonce
     ) {
 
         $this->id = $id;
+        $this->dbh = $dbh;
         $this->dateDebut = $dateDebut;
         $this->dateFin = $dateFin;
         $this->setPrix($prixReserve);
@@ -136,23 +139,43 @@ class Annonce
     }
 
 
-    public function displayAnnonce()
+    public function sauvegarde()
     {
-        echo "<p>" . $this->getDateDebut() . "</p>";
-        echo "<p>" . $this->getDateFin() . "</p>";
-        echo "<p>" . $this->getPrix() . "</p>";
-        echo "<p>" . $this->getMarque() . "</p>";
-        echo "<p>" . $this->getModele() . "</p>";
-        echo "<p>" . $this->getPuissance() . "</p>";
-        echo "<p>" . $this->getAnnee() . "</p>";
-        echo "<p>" . $this->getDescription() . "</p>";
+        $requery = $this->dbh->query("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
+        puissance, annee, description) VALUES (?,?,?,?,?)");
+        return $requery->execute([
+            $this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele,
+            $this->puissance, $this->annee, $this->description
+        ]);
     }
 
-    public function sauvegarde($dbh)
+
+
+    public function fetchSauv($dbh)
     {
-        $requery = $dbh->query("INSERT INTO auctions");
+        $requery = $dbh->query("SELECT * FROM annonces");
         $requery->execute();
 
-        $auctions = [];
+        $annonces = [];
+
+        if (is_a($requery, "PDOStatement")) {
+            $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
+
+            foreach ($sauvegarde as $sauv) {
+                array_push($annonces, new Annonce(
+                    $sauv['id'],
+                    $sauv['dbh'],
+                    $sauv['dateDebut'],
+                    $sauv['dateFin'],
+                    $sauv['prixReserve'],
+                    $sauv['marque'],
+                    $sauv['modele'],
+                    $sauv['puissance'],
+                    $sauv['annee'],
+                    $sauv['description']
+                ));
+            }
+            return $annonces;
+        }
     }
 }
