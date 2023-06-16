@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
+=======
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.formatOnSave": true
+}
+>>>>>>> 8d8d0f3ce194b2856690b8cb2828b93154d610b5
