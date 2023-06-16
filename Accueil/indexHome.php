@@ -40,18 +40,21 @@
     </div>
     <?php
 
+    include_once __DIR__ . "\..\Models\Auction.php";
     include_once __DIR__ . "\..\Models\Cars.php";
 
+    use Models\Auction;
     use Models\Cars as Car;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $publiAnnonce = new Car(
+        $publiAnnonce = new Auction(
             $_POST["model"],
             $_POST["brand"],
             $_POST["power"],
             $_POST["year"],
             $_POST["description"],
-            $_POST["price"]
+            $_POST["price"],
+            $_POST["auction_end"]
         );
         $publiAnnonce->displayAnnonce();
     } ?>

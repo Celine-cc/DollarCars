@@ -24,37 +24,42 @@ class User
         $this->email = $email;
     }
 
-
-
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
 
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->username;
     }
 
-    public function setUsername($username ){
-        if ($username != ""){
+    public function setUsername($username)
+    {
+        if ($username != "") {
             $this->username = $username;
         }
     }
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function setPassWord($password ){
-        if ($password != ""){
+    public function setPassWord($password)
+    {
+        if ($password != "") {
             $this->password = $password;
         }
     }
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function setEmail($email ){
-        if ($email != ""){
+    public function setEmail($email)
+    {
+        if ($email != "") {
             $this->email = $email;
         }
     }
@@ -62,20 +67,14 @@ class User
     public function setPDO()
     {
 
-        $dbh = DataBase ::createDBConnection();
-        $query = $dbh ->query("SELECT * FROM users");
+        $dbh = DataBase::createDBConnection();
+        $query = $dbh->query("SELECT * FROM users");
 
         $query->execute(array(
-            ":id" => $this->id, 
-            ":username" => $this->username, 
-            ":password" => $this->password, 
-            ":email" => $this->email));
-
-   
+            ":id" => $this->id,
+            ":username" => $this->username,
+            ":password" => $this->password,
+            ":email" => $this->email
+        ));
     }
-
-
 }
-
-
-
