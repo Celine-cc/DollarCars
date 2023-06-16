@@ -14,13 +14,13 @@
 
 
     <header>
-
-        <img src="../Style/img/Logo$Cars.png" alt="">
-
-        <menu>
-            <a href="../Accueil/indexHome.php">Accueil</a>
-            <a href="/Models/Cars.php">Voitures</a>
-        </menu>
+    
+    <img src="../Style/img/Logo$Cars.png" alt="">
+    
+    <menu>
+        <a href="../Accueil/indexHome.php">Accueil</a>
+        <a href="../Accueil/indexRegister.php">S'inscrire</a>
+    </menu>
     </header>
 
 
@@ -29,9 +29,9 @@
 
         <h2> Connectez-vous</h2>
         <form action="/Accueil/indexLogin.php" method="POST" class="formconnect2">
-            <input type="text" id="Username" name="Username" placeholder="Identifiant" required />
-            <input type="text" id="password" name="password" placeholder="Mot-de-passe" required />
             <input type="text" id="email" name="email" placeholder="Email" required />
+            <input type="password" id="password" name="password" placeholder="Mot-de-passe" required />
+            
 
             <button type="submit" value="Connection">Connection</button>
         </form>
@@ -40,21 +40,19 @@
 
     <?php
 
-    // include_once __DIR__ . "\DollarCars\Models\User.php";
+    include __DIR__ . "\DollarCars\Models\User.php";
 
-    //use DollarCars\Models\User;
+   if ($_SERVER) {
+        $connected = new User(
+            $_POST["email"],
+            $_POST["password"],
+           
+            
 
-    // if ($_SERVER) {
-    //    $connected = $new(
-    //         $_POST["username"],
-    //         $_POST["password"],
-    //        $_POST["email"],
-
-
-    //     );
-    //    $connected->displayAnnonce();
-    //} 
-    ?>
+       );
+    }
+       $connected->displayAnnonce();
+     ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
 </body>
 
