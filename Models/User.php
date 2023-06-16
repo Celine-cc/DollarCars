@@ -104,28 +104,43 @@ class User
     }
 
 
-    public function fetchSauv($dbh)
+    public function login($dbh)
     {
-        $requery = $dbh->query("SELECT * FROM users");
-        $requery->execute();
+        if (isset($this->email) and isset($this->password)) {
+            session_start();
 
-        $contact = [];
+            $requery = $dbh->prepare("SELECT * FROM users WHERE password = :password AND email = :email");
+            $requery->bindValue(":email", $this->email, PDO::PARAM_STR);
+            $requery->bindValue(":password", $this->password, PDO::PARAM_STR);
+            $requeryExec = $requery->execute();
 
-        if (is_a($requery, "PDOStatement")) {
-            $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
-
-            foreach ($sauvegarde as $sauv) {
-                array_push($contact, new User(
-                    $sauv['id'],
-                    $sauv['dbh'],
-                    $sauv['nom'],
-                    $sauv['prenom'],
-                    $sauv['email'],
-                    $sauv['password']
-
-                ));
+            if ($requeryExec) {
+                if ($requery->rowCount() > 0) {
+                    $_SESSION['email'] = $this->email;
+                    header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
+                } else {
+                    echo "Veuillez reessayer ou bien vous inscrire.";
+                    header("Refresh:5; url=/DollarCars/Accueil/indexLogin.php");
+                }
             }
-            return $contact;
         }
+
+
+        // if (is_a($requery, "PDOStatement")) {
+        //     $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
+
+        //     foreach ($sauvegarde as $sauv) {
+        //         array_push($contact, new User(
+        //             $sauv['id'],
+        //             $sauv['dbh'],
+        //             $sauv['nom'],
+        //             $sauv['prenom'],
+        //             $sauv['email'],
+        //             $sauv['password']
+
+        //         ));
+        //     }
+        //     return $contact;
+        // }
     }
 }
