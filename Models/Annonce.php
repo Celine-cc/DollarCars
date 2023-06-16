@@ -34,8 +34,8 @@ class Annonce
     ) {
 
         $this->id = $id;
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
+        $this->setDateDebut($dateDebut);
+        $this->setDateFin($dateFin);
         $this->setPrix($prixReserve);
         $this->setMarque($marque);
         $this->setModele($modele);

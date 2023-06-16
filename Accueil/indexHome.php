@@ -29,35 +29,42 @@
 
     <div class="formContainer">
         <form action="/Accueil/indexHome.php" method="POST">
-            <input type="text" id="typevoiture" name="model" placeholder="Modèle de voiture" required />
-            <input type="text" id="marque" name="brand" placeholder="Marque" required />
-            <input type="number" id="puissance" name="power" placeholder="Puissance (en CV)" required />
-            <input type="date" id="annee" name="year" placeholder="Année" required />
+            <input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required />
+            <input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required />
+            <input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required />
+            <input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required />
+            <input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required>
+            <input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required />
             <input type="text" id="description" name="description" placeholder="Description" required />
-            <input type="number" name="price" id="prix" placeholder="Prix de réserve (en €)" required>
             <input type="submit" value="PUBLIER">
         </form>
     </div>
     <?php
 
-    include_once __DIR__ . "\..\Models\Auction.php";
-    include_once __DIR__ . "\..\Models\Cars.php";
+    include_once __DIR__ . "\..\Models\Encherir.php";
+    include_once __DIR__ . "\..\Models\Annonce.php";
 
-    use Models\Auction;
-    use Models\Cars as Car;
+    use Models\Annonce;
+    use Models\Encherir;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $publiAnnonce = new Auction(
-            $_POST["model"],
-            $_POST["brand"],
-            $_POST["power"],
-            $_POST["year"],
+        $publiAnnonce = new Annonce(
+            null,
+            date("d-m-Y"),
+            $_POST["dateFin"],
+            $_POST["prixReserve"],
+            $_POST["marque"],
+            $_POST["modele"],
+            $_POST["puissance"],
+            $_POST["annee"],
             $_POST["description"],
-            $_POST["price"],
-            $_POST["auction_end"]
         );
-        $publiAnnonce->displayAnnonce();
-    } ?>
+
+        $publiAnnonce->fetchSauv();
+    }
+
+
+    ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
 </body>
 
