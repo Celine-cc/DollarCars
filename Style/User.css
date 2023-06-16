@@ -29,7 +29,7 @@ menu{
 a{
     color: rgb(127, 199, 45);
     border-style: none;
-    margin-right: 20%;
+    margin-right: 8%;
     font-size: 19px;
     font-weight: bolder;
     text-decoration: none;
@@ -56,8 +56,6 @@ button {
     color: #000;
     text-transform: uppercase;
     font-weight: 600;
-    margin-top: 3%;
-    margin-left: 42px;
     cursor: pointer;
     display: inline-block;
   }
