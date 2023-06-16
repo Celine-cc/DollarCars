@@ -2,7 +2,7 @@
 
 namespace Models;
 
-include_once __DIR__ . "/.../models/Database.php";
+include_once __DIR__ . "/../models/Database.php";
 
 use Models\Database;
 use PDO;
