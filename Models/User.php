@@ -35,31 +35,25 @@ class User
     }
 
 
-    public function getUsername()
-    {
-        return $this->username;
+  
     public function getNom(){
         return $this->nom;
     }
 
-    public function setUsername($username)
-    {
-        if ($username != "") {
-            $this->username = $username;
     public function setNom($nom ){
         if ($nom != ""){
             $this->nom = $nom;
         }
     }
-    public function getPassword()
+    public function getPrenom()
     {
-        return $this->password;
+        return $this->prenom;
     }
 
-    public function setPassWord($password)
+    public function setPrenom($prenom)
     {
-        if ($password != "") {
-            $this->password = $password;
+        if ($prenom != "") {
+            $this->prenom = $prenom;
         }
     }
     public function getEmail()
@@ -78,23 +72,6 @@ class User
         return $this->password;
     }
 
-    public function setPrenom($prenom ){
-        if ($prenom != ""){
-            $this->prenom = $prenom;
-        }
-    }
-    public function getEmail(){
-        return $this->email;
-    }
-
-    public function setEmail($email ){
-        if ($email != ""){
-            $this->email = $email;
-        }
-    }
-    public function getPassword(){
-        return $this->password;
-    }
 
     public function setPassWord($password ){
         if ($password != ""){
