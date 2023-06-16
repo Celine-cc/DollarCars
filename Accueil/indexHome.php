@@ -9,11 +9,19 @@
 </head>
 
 <body>
+    <?php
+
+    include_once __DIR__ . "\..\Models\Encherir.php";
+    include_once __DIR__ . "\..\Models\Annonce.php";
+
+    use Models\Annonce;
+    use Models\Database; ?>
     <header>
         <menu>
             <a href="../Accueil/indexHome.php">Accueil</a>
             <a href="../Accueil/indexLogin.php">Login</a>
             <a href="../Accueil/indexRegister.php">Register</a>
+            <?php Annonce::buttonConnect() ?>
         </menu>
 
         <h1>
@@ -62,13 +70,6 @@
 
 
     <?php
-
-    include_once __DIR__ . "\..\Models\Encherir.php";
-    include_once __DIR__ . "\..\Models\Annonce.php";
-
-    use Models\Annonce;
-    use Models\Database;
-    use Models\Encherir;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

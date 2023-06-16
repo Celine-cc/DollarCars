@@ -137,6 +137,16 @@ class Annonce
     }
 
 
+    public static function buttonConnect()
+    {
+        if (session_status() != null) {
+            echo "<p>🟢</p>";
+        } else {
+            echo "<p>🔴</p>";
+        }
+    }
+
+
     public function sauvegarde()
     {
         $requery = $this->dbh->prepare("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
