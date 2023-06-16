@@ -3,6 +3,7 @@
 namespace Models;
 
 include_once __DIR__ . "\DollarCars\Accueil\indexHome.php";
+include_once __DIR__ . "/.../models/Database.php";
 
 use PDO;
 
@@ -111,7 +112,7 @@ class Car
     }
 
 
-    public function showAll()
+    public function displayAnnonce()
     {
         echo "<p>" . $this->getPrix() . "</p>";
         echo "<p>" . $this->getTypeVoiture() . "</p>";
@@ -120,5 +121,13 @@ class Car
         echo "<p>" . $this->getAnnee() . "</p>";
         echo "<p>" . $this->getDescription() . "</p>";
         echo "<p>" . $this->getPrix() . "</p>";
+    }
+
+    public function sauvegarde($dbh)
+    {
+        $requery = $dbh->query("INSERT INTO auctions");
+        $requery->execute();
+
+        $auctions = [];
     }
 }
