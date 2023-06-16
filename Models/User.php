@@ -29,25 +29,53 @@ class User
        
     }
 
-
-
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
 
+    public function getUsername()
+    {
+        return $this->username;
     public function getNom(){
         return $this->nom;
     }
 
+    public function setUsername($username)
+    {
+        if ($username != "") {
+            $this->username = $username;
     public function setNom($nom ){
         if ($nom != ""){
             $this->nom = $nom;
         }
     }
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-    public function getPrenom(){
-        return $this->prenom;
+    public function setPassWord($password)
+    {
+        if ($password != "") {
+            $this->password = $password;
+        }
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        if ($email != "") {
+            $this->email = $email;
+        }
+    }
+
+    public function getPassword(){
+        return $this->password;
     }
 
     public function setPrenom($prenom ){
@@ -55,7 +83,6 @@ class User
             $this->prenom = $prenom;
         }
     }
-
     public function getEmail(){
         return $this->email;
     }
@@ -65,7 +92,6 @@ class User
             $this->email = $email;
         }
     }
-
     public function getPassword(){
         return $this->password;
     }
