@@ -12,16 +12,21 @@ namespace Models;
 class User
 {
     protected int $id;
-    protected string $username;
-    protected string $password;
+    protected string $nom;
+    protected string $prenom;
     protected string $email;
+    protected string $password;
+    protected $dbh;
 
-    public function __construct($id, $username, $password, $email)
+    public function __construct($id, $nom, $prenom, $email, $password, $dbh)
     {
         $this->id = $id;
-        $this->username = $username;
-        $this->password = $password;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
         $this->email = $email;
+        $this->password = $password;
+        $this->dbh = $dbh;
+       
     }
 
 
@@ -31,24 +36,26 @@ class User
     }
 
 
-    public function getUsername(){
-        return $this->username;
+    public function getNom(){
+        return $this->nom;
     }
 
-    public function setUsername($username ){
-        if ($username != ""){
-            $this->username = $username;
+    public function setNom($nom ){
+        if ($nom != ""){
+            $this->nom = $nom;
         }
-    }
-    public function getPassword(){
-        return $this->password;
     }
 
-    public function setPassWord($password ){
-        if ($password != ""){
-            $this->password = $password;
+    public function getPrenom(){
+        return $this->prenom;
+    }
+
+    public function setPrenom($prenom ){
+        if ($prenom != ""){
+            $this->prenom = $prenom;
         }
     }
+
     public function getEmail(){
         return $this->email;
     }
@@ -59,23 +66,40 @@ class User
         }
     }
 
+    public function getPassword(){
+        return $this->password;
+    }
+
+    public function setPassWord($password ){
+        if ($password != ""){
+            $this->password = $password;
+        }
+    }
+   
+
+   
     public function setPDO()
     {
 
         $dbh = DataBase ::createDBConnection();
-        $query = $dbh ->query("SELECT * FROM users");
+        $query = $dbh ->query("SELECT * FROM users WHERE password = :password ");
 
         $query->execute(array(
-            ":id" => $this->id, 
-            ":username" => $this->username, 
             ":password" => $this->password, 
-            ":email" => $this->email));
+            ));
 
    
     }
 
+    public function createcompte (){
+
+
+        $dbh = DataBase ::createDBConnection();
+        $crea = $dbh -> prepare("INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)");
+        return $crea->execute([$this->nom, $this->prenom, $this->email, $this->password]);
+
+
+    }
+
 
 }
-
-
-
