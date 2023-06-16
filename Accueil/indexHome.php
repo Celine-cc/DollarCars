@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" href="../Style/home.css" />
+    <link rel="stylesheet" href="../Style/acceuil.css" />
 </head>
 
 <body>
@@ -25,20 +25,42 @@
         <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
     </p>
 
-    <p><strong>Déposez ici votre annonce</strong></p>
 
     <div class="formContainer">
-        <form action="/Accueil/indexHome.php" method="POST">
-            <input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required />
-            <input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required />
-            <input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required />
-            <input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required />
-            <input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required>
-            <input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required />
-            <input type="text" id="description" name="description" placeholder="Description" required />
-            <input type="submit" value="PUBLIER">
-        </form>
+
+        <div class="extra"></div>
+        <br />
+        <div class="wrapper">
+
+            <div class="fix">
+
+
+                <p></p>
+                <div>
+                    <form action="../Accueil/indexHome.php" method="POST">
+                        <strong>Déposez ici votre annonce</strong>
+
+                        <p><input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required /></p>
+                        <p><input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required /></p>
+                        <p><input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required /></p>
+                        <p><input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required /></p>
+                        <p><input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required></p>
+                        <p><input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required /></p>
+                        <p><input type="text" id="description" name="description" placeholder="Description" required /></p>
+                        <p></p>
+                        <div><input type="submit" value="PUBLIER"></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="extra"></div>
+
+
     </div>
+
+
     <?php
 
     include_once __DIR__ . "\..\Models\Encherir.php";
@@ -49,9 +71,9 @@
     use Models\Encherir;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $dbh = Database::createDBConnection();
         $publiAnnonce = new Annonce(
-            null,
-            $dbh = Database::createDBConnection(),
             date("d-m-Y"),
             $_POST["dateFin"],
             $_POST["prixReserve"],
@@ -60,16 +82,17 @@
             $_POST["puissance"],
             $_POST["annee"],
             $_POST["description"],
+            $dbh
         );
 
         $publiAnnonce->sauvegarde();
 
-        $publiAnnonce->fetchSauv($dbh);
+        // $publiAnnonce->fetchSauv($dbh);
     }
 
 
     ?>
-    <footer>Par vos experts: Céline, Théo et Léa ©</footer>
+    <footer></footer>
 </body>
 
 </html>

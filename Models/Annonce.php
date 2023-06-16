@@ -10,7 +10,7 @@ use PDO;
 class Annonce
 
 {
-    protected int $id;
+    protected $id;
     protected $dbh;
     protected $dateDebut;
     protected $dateFin;
@@ -22,8 +22,6 @@ class Annonce
     protected string $description;
 
     public function __construct(
-        $id,
-        $dbh,
         $dateDebut,
         $dateFin,
         $prixReserve,
@@ -32,11 +30,10 @@ class Annonce
         $puissance,
         $annee,
         $description,
+        $dbh
 
     ) {
 
-        $this->id = $id;
-        $this->dbh = $dbh;
         $this->setDateDebut($dateDebut);
         $this->setDateFin($dateFin);
         $this->setPrix($prixReserve);
@@ -45,6 +42,7 @@ class Annonce
         $this->setPuissance($puissance);
         $this->setAnnee($annee);
         $this->setDescritpion($description);
+        $this->dbh = $dbh;
     }
 
 
@@ -84,7 +82,7 @@ class Annonce
 
     public function setPuissance($puissance)
     {
-        $this->id = $puissance;
+        $this->puissance = $puissance;
     }
 
 
@@ -141,12 +139,9 @@ class Annonce
 
     public function sauvegarde()
     {
-        $requery = $this->dbh->query("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
-        puissance, annee, description) VALUES (?,?,?,?,?)");
-        return $requery->execute([
-            $this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele,
-            $this->puissance, $this->annee, $this->description
-        ]);
+        $requery = $this->dbh->prepare("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
+        puissance, annee, description) VALUES (?,?,?,?,?,?,?,?)");
+        return $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
     }
 
 
@@ -159,12 +154,10 @@ class Annonce
         $annonces = [];
 
         if (is_a($requery, "PDOStatement")) {
-            $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
+            $sauvegarde = $requery->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($sauvegarde as $sauv) {
                 array_push($annonces, new Annonce(
-                    $sauv['id'],
-                    $sauv['dbh'],
                     $sauv['dateDebut'],
                     $sauv['dateFin'],
                     $sauv['prixReserve'],
@@ -172,7 +165,8 @@ class Annonce
                     $sauv['modele'],
                     $sauv['puissance'],
                     $sauv['annee'],
-                    $sauv['description']
+                    $sauv['description'],
+                    $dbh
                 ));
             }
             return $annonces;
