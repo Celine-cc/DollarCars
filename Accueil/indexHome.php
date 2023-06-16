@@ -43,11 +43,11 @@
     include_once __DIR__ . "\..\Models\Auction.php";
     include_once __DIR__ . "\..\Models\Cars.php";
 
-    use Models\Auction;
-    use Models\Cars as Car;
+    use Models\Encherir;
+    use Models\Annonces as Annonce;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $publiAnnonce = new Auction(
+        $publiAnnonce = new Encherir(
             $_POST["model"],
             $_POST["brand"],
             $_POST["power"],
