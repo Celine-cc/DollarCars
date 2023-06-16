@@ -1,21 +1,20 @@
-
 <?php
 
-include_once __DIR__ . "/indexHome.php";
-include_once __DIR__ . "/.../models/Database.php";
-
-
-
 namespace Models;
+
+include_once __DIR__ . "/../Models/Database.php";
+
+use Models\Database;
+use PDO;
 
 
 class User
 {
-    protected int $id;
-    protected string $nom;
-    protected string $prenom;
-    protected string $email;
-    protected string $password;
+    protected $id;
+    protected $nom;
+    protected $prenom;
+    protected $email;
+    protected $password;
     protected $dbh;
 
     public function __construct($id, $nom, $prenom, $email, $password, $dbh)
@@ -26,7 +25,6 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->dbh = $dbh;
-       
     }
 
     public function getId()
@@ -35,13 +33,15 @@ class User
     }
 
 
-  
-    public function getNom(){
+
+    public function getNom()
+    {
         return $this->nom;
     }
 
-    public function setNom($nom ){
-        if ($nom != ""){
+    public function setNom($nom)
+    {
+        if ($nom != "") {
             $this->nom = $nom;
         }
     }
@@ -68,41 +68,64 @@ class User
         }
     }
 
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
 
-    public function setPassWord($password ){
-        if ($password != ""){
+    public function setPassWord($password)
+    {
+        if ($password != "") {
             $this->password = $password;
         }
     }
-   
 
-   
+
+
     public function setPDO()
     {
 
-        $dbh = DataBase ::createDBConnection();
-        $query = $dbh ->query("SELECT * FROM users WHERE password = :password ");
+        $dbh = DataBase::createDBConnection();
+        $query = $dbh->query("SELECT * FROM users WHERE password = :password ");
 
         $query->execute(array(
-            ":password" => $this->password, 
-            ));
-
-   
+            ":password" => $this->password,
+        ));
     }
 
-    public function createcompte (){
+    public function createcompte()
+    {
 
 
-        $dbh = DataBase ::createDBConnection();
-        $crea = $dbh -> prepare("INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)");
+        $dbh = DataBase::createDBConnection();
+        $crea = $dbh->prepare("INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)");
         return $crea->execute([$this->nom, $this->prenom, $this->email, $this->password]);
-
-
     }
 
 
+    public function fetchSauv($dbh)
+    {
+        $requery = $dbh->query("SELECT * FROM users");
+        $requery->execute();
+
+        $contact = [];
+
+        if (is_a($requery, "PDOStatement")) {
+            $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
+
+            foreach ($sauvegarde as $sauv) {
+                array_push($contact, new User(
+                    $sauv['id'],
+                    $sauv['dbh'],
+                    $sauv['nom'],
+                    $sauv['prenom'],
+                    $sauv['email'],
+                    $sauv['password']
+
+                ));
+            }
+            return $contact;
+        }
+    }
 }

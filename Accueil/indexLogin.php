@@ -37,23 +37,30 @@
         </form>
 
     </div>
-
-    <?php
-
-    include __DIR__ . "\DollarCars\Models\User.php";
-
-   if ($_SERVER) {
-        $connected = new User(
-            $_POST["email"],
-            $_POST["password"],
-           
-            
-
-       );
-    }
-       $connected->displayAnnonce();
-     ?>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
+   
+   
 </body>
 
 </html>
+
+<?php
+
+include __DIR__ . "/../Models/User.php";
+
+if ($_SERVER) {
+    $connected = new User(
+        $_POST["email"],
+        $_POST["password"],
+       
+        
+
+   );
+}
+   $connected->displayAnnonce();
+ 
+
+
+ 
+ 
+ ?>
