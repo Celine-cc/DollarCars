@@ -2,9 +2,11 @@
 <?php
 
 include_once __DIR__ . "/indexHome.php";
+include_once __DIR__ . "/.../models/Database.php";
 
-use PDO;
-namespace User;
+
+
+namespace Models;
 
 
 class User
@@ -59,8 +61,8 @@ class User
 
     public function setPDO()
     {
-        $dbh = new PDO("mysql:dbname=dollarcars;host=127.0.0.1;port=8889", "root", "root");
 
+        $dbh = DataBase ::createDBConnection();
         $query = $dbh ->query("SELECT * FROM users");
 
         $query->execute(array(

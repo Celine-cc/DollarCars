@@ -19,10 +19,10 @@ use PDO;
 
 abstract class Database
 {
-
-    const ADDRESS = "mysql:dbname=dollarcars;host:localhost";
+  
+    const ADDRESS = "mysql:dbname=dollarcars;host=127.0.0.1;port=8889";
     const USER = "root";
-    const PASSWORD = "";
+    const PASSWORD = "root";
 
     /**
      * Création d'un connexion à la base de données
