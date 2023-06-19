@@ -17,6 +17,16 @@ use Models\Database; ?>
     <p> <a href="../Accueil/indexLogin.php">Login</a>
         <a href="../Accueil/indexRegister.php">Register</a>
     </p>
+    <h1>
+        <strong><i>Dollar Cars $</i></strong>
+    </h1>
+
+    </header>
+
+    <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
+        <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
+    </p>
+
     <p>
         <!-- Ajout du bouton Déconnexion -->
         <button class="button" href="/deconnexion.php">
@@ -34,71 +44,47 @@ use Models\Database; ?>
 
     <header>
         <menu>
-            <a href="../Accueil/indexLogin.php">Login</a>
-            <a href="../Accueil/indexRegister.php">Register</a>
-            <?php Annonce::buttonConnect() ?>
-
-            <?php
-
-            $dbh = Database::createDBConnection();
-            //connexion dbh
-
-            $sauvegarde = Annonce::fetchSauv($dbh);
-            //recup données
-            ?>
 
 
 
         </menu>
 
-        <!-- Ajout du bouton Déconnexion -->
-        <button class="button" onclick='location.href="../Accueil/indexDeconnexion.php"'><span>Déconnexion </span></button>
-
-
-        <h1>
-            <strong><i>Dollar Cars $</i></strong>
-        </h1>
-
-    </header>
-
-    <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
-        <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
-    </p>
-
-
-    <div class="formContainer">
-
-        <div class="extra"></div>
-        <br />
-        <div class="wrapper">
-
-            <div class="fix">
 
 
 
-                <div>
-                    <form action="../Accueil/indexHome.php" method="POST">
-                        <strong>Déposez ici votre annonce</strong>
+        <div class="formContainer">
 
-                        <p><input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required /></p>
-                        <p><input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required /></p>
-                        <p><input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required /></p>
-                        <p><input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required /></p>
-                        <p><input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required></p>
-                        <p><input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required /></p>
-                        <p><input type="text" id="description" name="description" placeholder="Description" required /></p>
-                        <p></p>
-                        <div><input type="submit" value="PUBLIER"></div>
+            <div class="extra"></div>
+            <br />
+            <div class="wrapper">
 
-                    </form>
+                <div class="fix">
+
+
+
+                    <div>
+                        <form action="../Accueil/indexHome.php" method="POST">
+                            <strong>Déposez ici votre annonce</strong>
+
+                            <p><input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required /></p>
+                            <p><input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required /></p>
+                            <p><input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required /></p>
+                            <p><input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required /></p>
+                            <p><input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required></p>
+                            <p><input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required /></p>
+                            <p><input type="text" id="description" name="description" placeholder="Description" required /></p>
+                            <p></p>
+                            <div><input type="submit" value="PUBLIER"></div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
+            <br />
+            <div class="extra"></div>
+
+
         </div>
-        <br />
-        <div class="extra"></div>
-
-
-    </div>
 </head>
 
 <body>
