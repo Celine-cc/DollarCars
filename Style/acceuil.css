@@ -10,6 +10,7 @@ body {
 
 .fix {
   position: fixed;
+  z-index: 7;
   background: green;
   width: 330px;
   height: 360px;
@@ -77,6 +78,7 @@ body {
 
 .publiannonce {
   flex-direction: column;
+  gap: 1rem;
   background-color: gray;
   opacity: 45%;
   color: #000;
