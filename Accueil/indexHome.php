@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+
     <?php
 
     include_once __DIR__ . "/../Models/Encherir.php";
@@ -21,6 +23,18 @@
             <a href="../Accueil/indexLogin.php">Login</a>
             <a href="../Accueil/indexRegister.php">Register</a>
             <?php Annonce::buttonConnect() ?>
+
+            <?php
+
+            $dbh = Database::createDBConnection();
+            //connexion dbh
+
+            $sauvegarde = Annonce::fetchSauv($dbh);
+            //recup données
+            ?>
+
+
+
         </menu>
 
         <!-- Ajout du bouton Déconnexion --> 
@@ -30,6 +44,7 @@
         <h1>
             <strong><i>Dollar Cars $</i></strong>
         </h1>
+
     </header>
 
     <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
@@ -91,11 +106,8 @@
 
         $publiAnnonce->sauvegarde();
 
-        // $publiAnnonce->fetchSauv($dbh);
+        $publiAnnonce->fetchSauv($dbh);
     }
-    
-  
-
     ?>
     <footer></footer>
 </body>

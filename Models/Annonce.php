@@ -45,7 +45,7 @@ class Annonce
         $this->dbh = $dbh;
     }
 
-
+    // get et set car protected->
 
     public function getId()
     {
@@ -153,10 +153,10 @@ class Annonce
         puissance, annee, description) VALUES (?,?,?,?,?,?,?,?)");
         return $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
     }
+    /*base de donnée, on y incre les nouvelles donneés, qui y seront sauvegardées*/
 
 
-
-    public function fetchSauv($dbh)
+    public static function fetchSauv($dbh)
     {
         $requery = $dbh->query("SELECT * FROM annonces");
         $requery->execute();
@@ -179,7 +179,22 @@ class Annonce
                     $dbh
                 ));
             }
-            return $annonces;
+            foreach ($annonces as $key => $value) { ?>
+                <div class="publiannonce">
+
+                    <h1>Annonce</h1>
+
+                    <p><?php echo $value->getDateFin() ?></p>;
+                    <p><?php echo $value->getPrix() ?></p>;
+                    <p><?php echo $value->getMarque() ?></p>;
+                    <p><?php echo $value->getModele() ?></p>;
+                    <p><?php echo $value->getPuissance() ?></p>;
+                    <p><?php echo $value->getAnnee() ?></p>;
+                    <p><?php echo $value->getDescription() ?></p>;
+                </div>
+
+<?php
+            }
         }
     }
 }
