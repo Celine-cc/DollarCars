@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" href="../Style/acceuil.css" />
+    <link rel="stylesheet" href="../Style/acceuil.css?t=<? echo time(); ?>" />
 </head>
 
 <body>
     <?php
 
-    include_once __DIR__ . "\..\Models\Encherir.php";
-    include_once __DIR__ . "\..\Models\Annonce.php";
+    include_once __DIR__ . "/../Models/Encherir.php";
+    include_once __DIR__ . "/../Models/Annonce.php";
 
     use Models\Annonce;
     use Models\Database; ?>
     <header>
         <menu>
-            <a href="../Accueil/indexHome.php">Accueil</a>
             <a href="../Accueil/indexLogin.php">Login</a>
             <a href="../Accueil/indexRegister.php">Register</a>
             <?php Annonce::buttonConnect() ?>
         </menu>
+
+        <!-- Ajout du bouton Déconnexion --> 
+        <button class="button" href="/deconnexion.php"><span>Déconnexion </span></button>
+   
 
         <h1>
             <strong><i>Dollar Cars $</i></strong>
@@ -90,7 +93,8 @@
 
         // $publiAnnonce->fetchSauv($dbh);
     }
-
+    
+  
 
     ?>
     <footer></footer>

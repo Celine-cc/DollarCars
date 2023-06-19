@@ -14,13 +14,12 @@
 
 
     <header>
+        <img  class="imgroute"src="https://www.euractiv.fr/wp-content/uploads/sites/3/2016/12/route.jpg" alt="">
+        <img class="logo"src="../Style/img/Logo3.jpeg" alt="">
 
-
-        <img src="../Style/img/Logo$Cars.png" alt="">
-
-        <menu>
-            <a href="../Accueil/indexHome.php">Accueil</a>
-            <a href="../Accueil/indexLogin.php">Connexion</a>
+        <menu >
+            <a href="../Accueil/indexHome.php" class="amenu2">Accueil</a>
+            <a href="../Accueil/indexLogin.php" class="amenu2">Connexion</a>
         </menu>
     </header>
 
@@ -36,13 +35,11 @@
             <input type="password" id="password" name="password" placeholder="Mot-de-passe" required />
 
 
-            <button type="submit" value="Connection" name="button">Valider</button>
+            <button type="submit" value="Connection" >Valider</button>
         </form>
 
     </div>
     <footer>Par vos experts: Céline, Théo et Léa ©</footer>
-
-
 
 </body>
 

@@ -100,7 +100,16 @@ class User
 
         $dbh = DataBase::createDBConnection();
         $crea = $dbh->prepare("INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)");
-        return $crea->execute([$this->nom, $this->prenom, $this->email, $this->password]);
+        $crea2 = $crea->execute([$this->nom, $this->prenom, $this->email, $this->password]);
+
+        if ($crea2) {
+            if ($crea->rowCount() > 0) {
+              header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
+            }
+        }
+
+     
+        
     }
 
 
@@ -119,28 +128,35 @@ class User
                     $_SESSION['email'] = $this->email;
                     header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
                 } else {
-                    echo "Veuillez reessayer ou bien vous inscrire.";
-                    header("Refresh:5; url=/DollarCars/Accueil/indexLogin.php");
+                    echo "<div class=\"messerror\" ><span>Mot de passe / Email incorrect.</span>
+                    <span>Veuillez reessayer ou bien vous inscrire.</span></div>";
+                    header("Refresh:10; url=/DollarCars/Accueil/indexLogin.php");
                 }
             }
         }
 
-
-        // if (is_a($requery, "PDOStatement")) {
-        //     $sauvegarde = $requery->fetchsauvegarde(PDO::FETCH_ASSOC);
-
-        //     foreach ($sauvegarde as $sauv) {
-        //         array_push($contact, new User(
-        //             $sauv['id'],
-        //             $sauv['dbh'],
-        //             $sauv['nom'],
-        //             $sauv['prenom'],
-        //             $sauv['email'],
-        //             $sauv['password']
-
-        //         ));
-        //     }
-        //     return $contact;
-        // }
+        
     }
+
+    public function deconnexion(){
+
+        session_start(); 
+        session_destroy();  
+        echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
+        exit;
+    }
+  
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <u> User</u></title>
+    <link rel="stylesheet" href="../Style/User.css" />
+</head>
+
+<body></body>
+
+</html>

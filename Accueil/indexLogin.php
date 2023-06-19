@@ -14,12 +14,12 @@
 
 
     <header>
-
-        <img src="../Style/img/Logo$Cars.png" alt="">
+    <img  class="imgroute"src="https://www.euractiv.fr/wp-content/uploads/sites/3/2016/12/route.jpg" alt="">
+       <img class="logo"src="../Style/img/Logo3.jpeg" alt="">
 
         <menu>
-            <a href="../Accueil/indexHome.php">Accueil</a>
-            <a href="../Accueil/indexRegister.php">S'inscrire</a>
+            <a href="../Accueil/indexHome.php" class="amenu">Accueil</a>
+           
         </menu>
     </header>
 
@@ -31,9 +31,11 @@
         <form action="/DollarCars/Accueil/indexLogin.php" method="POST" class="formconnect2">
             <input type="text" id="email" name="email" placeholder="Email" required />
             <input type="password" id="password" name="password" placeholder="Mot-de-passe" required />
+            
+           
 
-
-            <button type="submit" value="Connection">Connection</button>
+            <button type="submit" value="Connection"name ="connection">Connection</button> 
+            <a class="inscrire" href="../Accueil/indexRegister.php">🟠 Inscription 🟠</a>
         </form>
 
     </div>
