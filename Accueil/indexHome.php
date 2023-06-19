@@ -20,7 +20,7 @@ use Models\Database; ?>
 <header>
     <menu>
         <?php
-        if (session_status() == PHP_SESSION_ACTIVE) {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
         ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
