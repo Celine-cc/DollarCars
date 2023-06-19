@@ -14,105 +14,76 @@ use Models\Database; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="../Style/acceuil.css?t=<? echo time(); ?>" />
-    <p> <a href="../Accueil/indexLogin.php">Login</a>
-        <a href="../Accueil/indexRegister.php">Register</a>
-    </p>
+</head>
+
+
+<header>
+    <menu>
+        <?php
+        if (session_status() == PHP_SESSION_ACTIVE) {
+        ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
+            <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
+        <?php } else {
+        ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
+        <?php }
+        Annonce::buttonConnect();
+        ?>
+    </menu>
+
     <h1>
         <strong><i>Dollar Cars $</i></strong>
     </h1>
 
-    </header>
+</header>
 
-    <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
-        <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
-    </p>
+<p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
+    <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
+</p>
 
-    <p>
-        <!-- Ajout du bouton Déconnexion -->
-        <button class="button" href="/deconnexion.php">
-            <span>Déconnexion</span>
-        </button>
-    </p>
-    <?php Annonce::buttonConnect() ?>
+<div class="formContainer">
+    <div class="wrapper">
+        <div class="fix">
+            <div>
+                <form action="indexHome.php" method="POST">
+                    <strong>Déposez ici votre annonce</strong>
 
-    <?php
+                    <p><input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required /></p>
+                    <p><input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required /></p>
+                    <p><input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required /></p>
+                    <p><input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required /></p>
+                    <p><input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required></p>
+                    <p><input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required /></p>
+                    <p><input type="text" id="description" name="description" placeholder="Description" required /></p>
+                    <input type="submit" value="PUBLIER">
 
-    $dbh = Database::createDBConnection();
-    //connexion dbh
-
-    ?>
-
-    <header>
-        <menu>
-
-
-
-        </menu>
-
-
-
-
-        <div class="formContainer">
-
-            <div class="extra"></div>
-            <br />
-            <div class="wrapper">
-
-                <div class="fix">
-
-
-
-                    <div>
-                        <form action="../Accueil/indexHome.php" method="POST">
-                            <strong>Déposez ici votre annonce</strong>
-
-                            <p><input type="date" id="dateFin" name="dateFin" placeholder="Date de fin des enchères" required /></p>
-                            <p><input type="number" id="prixReserve" name="prixReserve" placeholder="Prix de réserve (en €)" required /></p>
-                            <p><input type="text" id="marque" name="marque" placeholder="Marque du véhicule" required /></p>
-                            <p><input type="text" id="modele" name="modele" placeholder="Modèle du véhicule" required /></p>
-                            <p><input type="number" name="puissance" id="puissance" placeholder="Puissance du véhicule (en CV)" required></p>
-                            <p><input type="number" id="annee" name="annee" placeholder="Année de sortie du véhicule" required /></p>
-                            <p><input type="text" id="description" name="description" placeholder="Description" required /></p>
-                            <p></p>
-                            <div><input type="submit" value="PUBLIER"></div>
-
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
-            <br />
-            <div class="extra"></div>
-
-
         </div>
-</head>
+    </div>
 
-<body>
-    <menu>
-    </menu>
-    <?php
+    <body>
+        <?php
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $dbh = Database::createDBConnection();
-        $publiAnnonce = new Annonce(
-            date("d-m-Y"),
-            $_POST["dateFin"],
-            $_POST["prixReserve"],
-            $_POST["marque"],
-            $_POST["modele"],
-            $_POST["puissance"],
-            $_POST["annee"],
-            $_POST["description"],
-            $dbh
-        );
+            $dbh = Database::createDBConnection();
+            $publiAnnonce = new Annonce(
+                date("d-m-Y"),
+                $_POST["dateFin"],
+                $_POST["prixReserve"],
+                $_POST["marque"],
+                $_POST["modele"],
+                $_POST["puissance"],
+                $_POST["annee"],
+                $_POST["description"],
+                $dbh
+            );
 
-        $publiAnnonce->sauvegarde();
+            $publiAnnonce->sauvegarde();
 
-        $publiAnnonce->fetchSauv($dbh);
-    }
-    ?>
-    <footer></footer>
-</body>
+            $publiAnnonce->fetchSauv($dbh);
+        }
+        ?>
+    </body>
 
 </html>

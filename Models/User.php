@@ -104,19 +104,14 @@ class User
 
         if ($crea2) {
             if ($crea->rowCount() > 0) {
-              header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
+                header("Refresh:0; url=indexHome.php");
             }
         }
-
-     
-        
     }
 
 
-    public function login($dbh){
-
-        session_start();
-
+    public function login($dbh)
+    {
         if (isset($this->email) and isset($this->password)) {
             session_start();
 
@@ -128,32 +123,28 @@ class User
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
                     $_SESSION['email'] = $this->email;
-                    header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
+                    header("Refresh:0; url=indexHome.php");
                 } else {
                     echo "<div class=\"messerror\" ><span>Mot de passe / Email incorrect.</span>
                     <span>Veuillez reessayer ou bien vous inscrire.</span></div>";
-                    header("Refresh:10; url=/DollarCars/Accueil/indexLogin.php");
+                    header("Refresh:10; url=indexHome.php");
                 }
             }
         }
-
-        
     }
 
-    public static function deconnexion(){
-
-        session_start();
-        session_destroy();  
+    public static function deconnexion()
+    {
+        session_destroy();
         echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
-        header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
+        header("Refresh:0; url=indexHome.php");
         exit;
-        
-        }
-  
+    }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
