@@ -113,8 +113,10 @@ class User
     }
 
 
-    public function login($dbh)
-    {
+    public function login($dbh){
+
+        session_start();
+
         if (isset($this->email) and isset($this->password)) {
             session_start();
 
@@ -138,13 +140,15 @@ class User
         
     }
 
-    public function deconnexion(){
+    public static function deconnexion(){
 
-        session_start(); 
+        session_start();
         session_destroy();  
         echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
+        header("Refresh:0; url=/DollarCars/Accueil/indexHome.php");
         exit;
-    }
+        
+        }
   
 }
 ?>

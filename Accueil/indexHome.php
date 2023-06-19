@@ -24,8 +24,8 @@
         </menu>
 
         <!-- Ajout du bouton Déconnexion --> 
-        <button class="button" href="/deconnexion.php"><span>Déconnexion </span></button>
-   
+        <button class="button" onclick='location.href="../Accueil/indexDeconnexion.php"'><span>Déconnexion </span></button>
+      
 
         <h1>
             <strong><i>Dollar Cars $</i></strong>
