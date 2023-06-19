@@ -74,3 +74,11 @@ body {
   opacity: 1;
   right: 0;
 }
+
+.publiannonce {
+  position: absolute;
+  flex-direction: column;
+  background-color: gray;
+  opacity: 70%;
+  color: #000;
+}

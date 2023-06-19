@@ -184,13 +184,16 @@ class Annonce
 
                     <h1>Annonce</h1>
 
-                    <p><?php echo $value->getDateFin() ?></p>;
-                    <p><?php echo $value->getPrix() ?></p>;
-                    <p><?php echo $value->getMarque() ?></p>;
-                    <p><?php echo $value->getModele() ?></p>;
-                    <p><?php echo $value->getPuissance() ?></p>;
-                    <p><?php echo $value->getAnnee() ?></p>;
-                    <p><?php echo $value->getDescription() ?></p>;
+                    <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
+                le detail sera affiché en deuxième page -->
+
+                    <p><?php echo $value->getDateFin() ?></p>
+                    <p><?php echo $value->getPrix() ?></p>
+                    <p><?php echo $value->getMarque() ?></p>
+                    <p><?php echo $value->getModele() ?></p>
+                    <p><?php echo $value->getPuissance() ?></p>
+                    <p><?php echo $value->getAnnee() ?></p>
+                    <p><?php echo $value->getDescription() ?></p>
                 </div>
 
 <?php

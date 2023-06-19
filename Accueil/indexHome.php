@@ -1,3 +1,11 @@
+<?php
+
+include_once __DIR__ . "/../Models/Encherir.php";
+include_once __DIR__ . "/../Models/Annonce.php";
+
+use Models\Annonce;
+use Models\Database; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,50 +14,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="../Style/acceuil.css?t=<? echo time(); ?>" />
-</head>
-
-<body>
-
+    <p> <a href="../Accueil/indexLogin.php">Login</a>
+        <a href="../Accueil/indexRegister.php">Register</a>
+    </p>
+    <p>
+        <!-- Ajout du bouton Déconnexion -->
+        <button class="button" href="/deconnexion.php">
+            <span>Déconnexion</span>
+        </button>
+    </p>
+    <?php Annonce::buttonConnect() ?>
 
     <?php
 
-    include_once __DIR__ . "/../Models/Encherir.php";
-    include_once __DIR__ . "/../Models/Annonce.php";
+    $dbh = Database::createDBConnection();
+    //connexion dbh
 
-    use Models\Annonce;
-    use Models\Database; ?>
-    <header>
-        <menu>
-            <a href="../Accueil/indexLogin.php">Login</a>
-            <a href="../Accueil/indexRegister.php">Register</a>
-            <?php Annonce::buttonConnect() ?>
-
-            <?php
-
-            $dbh = Database::createDBConnection();
-            //connexion dbh
-
-            $sauvegarde = Annonce::fetchSauv($dbh);
-            //recup données
-            ?>
-
-
-
-        </menu>
-
-        <!-- Ajout du bouton Déconnexion -->
-        <button class="button" href="/deconnexion.php"><span>Déconnexion </span></button>
-
-
-        <h1>
-            <strong><i>Dollar Cars $</i></strong>
-        </h1>
-
-    </header>
-
-    <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
-        <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
-    </p>
+    $sauvegarde = Annonce::fetchSauv($dbh);
+    //recup données
+    ?>
 
 
     <div class="formContainer">
@@ -61,7 +44,7 @@
             <div class="fix">
 
 
-                <p></p>
+
                 <div>
                     <form action="../Accueil/indexHome.php" method="POST">
                         <strong>Déposez ici votre annonce</strong>
@@ -85,8 +68,11 @@
 
 
     </div>
+</head>
 
-
+<body>
+    <menu>
+    </menu>
     <?php
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
