@@ -30,9 +30,40 @@ use Models\Database; ?>
     $dbh = Database::createDBConnection();
     //connexion dbh
 
-    $sauvegarde = Annonce::fetchSauv($dbh);
-    //recup données
     ?>
+
+    <header>
+        <menu>
+            <a href="../Accueil/indexLogin.php">Login</a>
+            <a href="../Accueil/indexRegister.php">Register</a>
+            <?php Annonce::buttonConnect() ?>
+
+            <?php
+
+            $dbh = Database::createDBConnection();
+            //connexion dbh
+
+            $sauvegarde = Annonce::fetchSauv($dbh);
+            //recup données
+            ?>
+
+
+
+        </menu>
+
+        <!-- Ajout du bouton Déconnexion -->
+        <button class="button" onclick='location.href="../Accueil/indexDeconnexion.php"'><span>Déconnexion </span></button>
+
+
+        <h1>
+            <strong><i>Dollar Cars $</i></strong>
+        </h1>
+
+    </header>
+
+    <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
+        <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
+    </p>
 
 
     <div class="formContainer">
