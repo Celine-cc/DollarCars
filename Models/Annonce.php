@@ -186,7 +186,6 @@ class Annonce
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
-
                     <p><?php echo $value->getDateFin() ?></p>
                     <p><?php echo $value->getPrix() ?></p>
                     <p><?php echo $value->getMarque() ?></p>
