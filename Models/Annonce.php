@@ -151,11 +151,7 @@ class Annonce
     {
         $requery = $this->dbh->prepare("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
         puissance, annee, description) VALUES (?,?,?,?,?,?,?,?)");
-        $ret =  $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
-        var_dump($ret);
-        var_dump($requery);
-        var_dump($this);
-        die();
+        $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
     }
     /*base de donnée, on y incre les nouvelles donneés, qui y seront sauvegardées*/
 
@@ -190,6 +186,7 @@ class Annonce
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
+                    <p><?php echo "Date début : " . $value->getDateDebut() ?></p>
                     <p><?php echo "Date de fin : " . $value->getDateFin() ?></p>
                     <p><?php echo "Prix de réserve : " . $value->getPrix() ?></p>
                     <p><?php echo "Marque : " . $value->getMarque() ?></p>
