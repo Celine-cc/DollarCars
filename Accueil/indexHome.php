@@ -20,7 +20,7 @@ use Models\Database; ?>
 <header>
     <menu>
         <?php
-        if (session_status() !== PHP_SESSION_ACTIVE) {
+        if (session_status() == null) {
         ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
@@ -84,6 +84,9 @@ use Models\Database; ?>
             $publiAnnonce->sauvegarde();
 
             $publiAnnonce->fetchSauv($dbh);
+        } else {
+            $dbh = Database::createDBConnection();
+            Annonce::fetchSauv($dbh);
         }
         ?>
     </body>

@@ -113,7 +113,6 @@ class User
     public function login($dbh)
     {
         if (isset($this->email) and isset($this->password)) {
-            session_start();
 
             $requery = $dbh->prepare("SELECT * FROM users WHERE password = :password AND email = :email");
             $requery->bindValue(":email", $this->email, PDO::PARAM_STR);
@@ -122,6 +121,7 @@ class User
 
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
+                    session_start();
                     $_SESSION['email'] = $this->email;
                     header("Refresh:0; url=indexHome.php");
                 } else {
@@ -135,7 +135,7 @@ class User
 
     public static function deconnexion()
     {
-        session_destroy();
+        session_register_shutdown();
         echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
         header("Refresh:0; url=indexHome.php");
         exit;
