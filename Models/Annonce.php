@@ -187,7 +187,8 @@ class Annonce
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
-                    <p><?php echo "Disponible depuis : " . $value->getDateDebut() ?></p>
+                    <!-- <p><?php //echo "Disponible depuis : " . $value->getDateDebut() 
+                            ?></p> -->
                     <p><?php echo "Disponible jusqu'au : " . $value->getDateFin() ?></p>
                     <p><?php echo "Prix de réserve : " . $value->getPrix() . " €" ?></p>
                     <p><?php echo "Marque : " . $value->getMarque() ?></p>
