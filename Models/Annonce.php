@@ -155,6 +155,23 @@ class Annonce
     }
     /*base de donnée, on y incre les nouvelles donneés, qui y seront sauvegardées*/
 
+    public static function afficherDetails($value)
+    { ?>
+        <div class="publiannonce">
+            <h1>Annonce</h1>
+
+
+
+
+            <p><?php echo $value->getDateFin() ?></p>
+            <p><?php echo $value->getPrix() ?></p>
+            <strong><?php echo $value->getMarque() ?></strong>
+            <p><?php echo $value->getModele() ?></p>
+            <p><?php echo $value->getPuissance() ?></p>
+            <p><?php echo $value->getAnnee() ?></p>
+            <p><?php echo $value->getDescription() ?></p>
+        </div>
+        <?php }
 
     public static function fetchSauv($dbh)
     {
@@ -180,22 +197,26 @@ class Annonce
                 ));
             }
             foreach ($annonces as $key => $value) { ?>
-                <div class="publiannonce">
 
+
+                <div class="publiannonce">
                     <h1>Annonce</h1>
+
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
                     <p><?php echo $value->getDateFin() ?></p>
                     <p><?php echo $value->getPrix() ?></p>
-                    <p><?php echo $value->getMarque() ?></p>
-                    <p><?php echo $value->getModele() ?></p>
-                    <p><?php echo $value->getPuissance() ?></p>
-                    <p><?php echo $value->getAnnee() ?></p>
-                    <p><?php echo $value->getDescription() ?></p>
+                    <strong><?php echo $value->getMarque() ?></strong>
+
                 </div>
+                <button class="voir" onclick="location.href='publication.php'">👁</button>
+
+
 
 <?php
+
+
             }
         }
     }
