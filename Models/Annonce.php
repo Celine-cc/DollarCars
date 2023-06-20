@@ -139,7 +139,7 @@ class Annonce
 
     public static function buttonConnect()
     {
-        if (session_status() != null) {
+        if (count($_SESSION) > 0) {
             echo "<p>🟢</p>";
         } else {
             echo "<p>🔴</p>";

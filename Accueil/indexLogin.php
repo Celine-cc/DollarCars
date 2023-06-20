@@ -34,7 +34,7 @@
 
 
 
-            <button type="submit" value="Connection" name="connection">Connection</button>
+            <button type="submit" value="Connection" name="connection">Connexion</button>
             <a class="inscrire" href="../Accueil/indexRegister.php">🟠 Inscription 🟠</a>
         </form>
 
