@@ -22,6 +22,7 @@ class Annonce
     protected string $description;
 
     public function __construct(
+        $id,
         $dateDebut,
         $dateFin,
         $prixReserve,
@@ -33,7 +34,7 @@ class Annonce
         $dbh
 
     ) {
-
+        $this->id = $id;
         $this->setDateDebut($dateDebut);
         $this->setDateFin($dateFin);
         $this->setPrix($prixReserve);
@@ -165,9 +166,9 @@ class Annonce
 
         if (is_a($requery, "PDOStatement")) {
             $sauvegarde = $requery->fetchAll(PDO::FETCH_ASSOC);
-
             foreach ($sauvegarde as $sauv) {
                 array_push($annonces, new Annonce(
+                    $sauv['id'],
                     $sauv['dateDebut'],
                     $sauv['dateFin'],
                     $sauv['prixReserve'],
@@ -182,7 +183,7 @@ class Annonce
             foreach ($annonces as $key => $value) { ?>
                 <div class="publiannonce">
 
-                    <h1>Annonce</h1>
+                    <h1><?php echo "Annonce " . $value->getId() ?> </h1>
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
@@ -190,10 +191,14 @@ class Annonce
                     <p><?php echo "Disponible jusqu'au : " . $value->getDateFin() ?></p>
                     <p><?php echo "Prix de réserve : " . $value->getPrix() . " €" ?></p>
                     <p><?php echo "Marque : " . $value->getMarque() ?></p>
-                    <p><?php echo "Modèle : " . $value->getModele() ?></p>
-                    <p><?php echo "Puissance : " . $value->getPuissance() . " CV" ?></p>
-                    <p><?php echo "Année : " . $value->getAnnee() ?></p>
-                    <p><?php echo $value->getDescription() ?></p>
+                    <!-- <p><?php //echo "Modèle : " . $value->getModele() 
+                            ?></p> -->
+                    <!-- <p><?php //echo "Puissance : " . $value->getPuissance() . " CV" 
+                            ?></p> -->
+                    <!-- <p><?php //echo "Année : " . $value->getAnnee() 
+                            ?></p> -->
+                    <!-- <p><?php //echo $value->getDescription() 
+                            ?></p> -->
                 </div>
 
 <?php
