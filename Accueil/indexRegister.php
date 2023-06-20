@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../Style/User.css" />
 
 
@@ -48,6 +48,7 @@
 
 <?php
 
+session_start();
 include_once __DIR__ . "/../Models/User.php";
 
 use Models\User;

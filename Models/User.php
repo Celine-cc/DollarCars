@@ -6,7 +6,7 @@ include_once __DIR__ . "/../Models/Database.php";
 
 use Models\Database;
 use PDO;
-
+use SessionHandler;
 
 class User
 {
@@ -113,7 +113,6 @@ class User
     public function login($dbh)
     {
         if (isset($this->email) and isset($this->password)) {
-            session_start();
 
             $requery = $dbh->prepare("SELECT * FROM users WHERE password = :password AND email = :email");
             $requery->bindValue(":email", $this->email, PDO::PARAM_STR);
@@ -135,10 +134,10 @@ class User
 
     public static function deconnexion()
     {
+        session_start();
         session_destroy();
         echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
         header("Refresh:0; url=indexHome.php");
-        exit;
     }
 }
 ?>

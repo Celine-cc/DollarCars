@@ -22,10 +22,6 @@ body {
   right: 5%;
 }
 
-/* .wrapper {
-  width: 75%;
-  margin: auto;
-} */
 .extra {
   height: 100px;
 }
@@ -77,10 +73,13 @@ body {
 }
 
 .publiannonce {
+  flex-direction: column;
+  width: 20%;
+  margin-bottom: 5rem;
   background-color: gray;
   opacity: 45%;
   color: #000;
-  border-radius: 1%;
+  border-radius: 10px;
   border-top: 4px solid red;
   display: flex;
 }

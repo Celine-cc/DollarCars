@@ -20,14 +20,18 @@ use Models\Database; ?>
 <header>
     <menu>
         <?php
-        if (session_status() == PHP_SESSION_ACTIVE) {
+        session_start();
+        if (count($_SESSION) == 0) {
+            Annonce::buttonConnect();
         ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
+            Annonce::buttonConnect();
         ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
+
         <?php }
-        Annonce::buttonConnect();
         ?>
+        <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
     </menu>
 
     <h1>
@@ -69,7 +73,8 @@ use Models\Database; ?>
 
             $dbh = Database::createDBConnection();
             $publiAnnonce = new Annonce(
-                date("d-m-Y"),
+                null,
+                date("Y-m-d"),
                 $_POST["dateFin"],
                 $_POST["prixReserve"],
                 $_POST["marque"],
@@ -83,6 +88,9 @@ use Models\Database; ?>
             $publiAnnonce->sauvegarde();
 
             $publiAnnonce->fetchSauv($dbh);
+        } else {
+            $dbh = Database::createDBConnection();
+            Annonce::fetchSauv($dbh);
         }
 
 
