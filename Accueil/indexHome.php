@@ -21,16 +21,15 @@ use Models\Database; ?>
     <menu>
         <?php
         session_start();
-        var_dump($_SESSION);
         if (count($_SESSION) == 0) {
         ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
         ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
-           
+
         <?php }
         Annonce::buttonConnect();
-        ?> 
+        ?>
         <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
     </menu>
 
