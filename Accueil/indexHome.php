@@ -85,6 +85,9 @@ use Models\Database; ?>
             $publiAnnonce->sauvegarde();
 
             $publiAnnonce->fetchSauv($dbh);
+        } else {
+            $dbh = Database::createDBConnection();
+            Annonce::fetchSauv($dbh);
         }
         ?>
     </body>
