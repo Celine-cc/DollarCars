@@ -151,7 +151,11 @@ class Annonce
     {
         $requery = $this->dbh->prepare("INSERT INTO annonces (dateDebut, dateFin, prixReserve, marque, modele,
         puissance, annee, description) VALUES (?,?,?,?,?,?,?,?)");
-        return $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
+        $ret =  $requery->execute([$this->dateDebut, $this->dateFin, $this->prixReserve, $this->marque, $this->modele, $this->puissance, $this->annee, $this->description]);
+        var_dump($ret);
+        var_dump($requery);
+        var_dump($this);
+        die();
     }
     /*base de donnée, on y incre les nouvelles donneés, qui y seront sauvegardées*/
 

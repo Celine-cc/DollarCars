@@ -28,15 +28,16 @@
         <h3>Modifiaction de votre profil utilisateur</h3>
       
         <form action="/DollarCars/Accueil/indexChangeProfil.php" method="POST" class="formprofil1">
-            <input type="text" name="name" placeholder="Nom" required />
+            <input type="text" name="nom" placeholder="Nom" required />
+            <input type="text" name="prenom" placeholder="Prénom" required /> 
             <input type="text" name="email" placeholder="Email" required /> 
-            <input type="text" name="email" placeholder="Email" required /> 
-            <input type="text" name="email" placeholder="Email" required /> 
+            <input type="text" name="password" placeholder="Mot-de-passe" required /> 
             
           
 
 
-            <button type="submit" value="Connection">Modifier</button>
+            <button type="submit" value="Connection">Modifier mon profil</button>
+            <button type="submit" value="Connection">Annuler</button>
         </form>
 
     </div>
