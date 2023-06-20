@@ -72,6 +72,7 @@ use Models\Database; ?>
 
             $dbh = Database::createDBConnection();
             $publiAnnonce = new Annonce(
+                null,
                 date("Y-m-d"),
                 $_POST["dateFin"],
                 $_POST["prixReserve"],
