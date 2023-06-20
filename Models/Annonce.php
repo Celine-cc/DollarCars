@@ -186,12 +186,12 @@ class Annonce
 
                     <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
                 le detail sera affiché en deuxième page -->
-                    <p><?php echo "Date début : " . $value->getDateDebut() ?></p>
-                    <p><?php echo "Date de fin : " . $value->getDateFin() ?></p>
-                    <p><?php echo "Prix de réserve : " . $value->getPrix() ?></p>
+                    <p><?php echo "Disponible depuis : " . $value->getDateDebut() ?></p>
+                    <p><?php echo "Disponible jusqu'au : " . $value->getDateFin() ?></p>
+                    <p><?php echo "Prix de réserve : " . $value->getPrix() . " €" ?></p>
                     <p><?php echo "Marque : " . $value->getMarque() ?></p>
                     <p><?php echo "Modèle : " . $value->getModele() ?></p>
-                    <p><?php echo "Puissance : " . $value->getPuissance() ?></p>
+                    <p><?php echo "Puissance : " . $value->getPuissance() . " CV" ?></p>
                     <p><?php echo "Année : " . $value->getAnnee() ?></p>
                     <p><?php echo $value->getDescription() ?></p>
                 </div>
