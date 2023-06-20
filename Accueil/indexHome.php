@@ -25,9 +25,11 @@ use Models\Database; ?>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
         ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
+           
         <?php }
         Annonce::buttonConnect();
-        ?>
+        ?> 
+        <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
     </menu>
 
     <h1>
