@@ -83,17 +83,3 @@ body {
   border-top: 4px solid red;
   display: flex;
 }
-
-.encherir {
-  opacity: 70%;
-  background-color: brown;
-  border-radius: 4%;
-}
-
-.voir {
-  opacity: 30%;
-  border-radius: 60%;
-}
-/* .espace {
-  height: 40%;
-} */
