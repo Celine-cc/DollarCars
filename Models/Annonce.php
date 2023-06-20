@@ -156,6 +156,23 @@ class Annonce
     }
     /*base de donnée, on y incre les nouvelles donneés, qui y seront sauvegardées*/
 
+    public static function afficherDetails($value)
+    { ?>
+        <div class="publiannonce">
+            <h1>Annonce</h1>
+
+
+
+
+            <p><?php echo $value->getDateFin() ?></p>
+            <p><?php echo $value->getPrix() ?></p>
+            <strong><?php echo $value->getMarque() ?></strong>
+            <p><?php echo $value->getModele() ?></p>
+            <p><?php echo $value->getPuissance() ?></p>
+            <p><?php echo $value->getAnnee() ?></p>
+            <p><?php echo $value->getDescription() ?></p>
+        </div>
+        <?php }
 
     public static function fetchSauv($dbh)
     {
@@ -201,8 +218,13 @@ class Annonce
                     <!-- <p><?php //echo $value->getDescription() 
                             ?></p> -->
                 </div>
+                <button class="voir" onclick="location.href='publication.php'">👁</button>
+
+
 
 <?php
+
+
             }
         }
     }

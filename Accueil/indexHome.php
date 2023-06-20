@@ -43,6 +43,7 @@ use Models\Database; ?>
 <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
     <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
 </p>
+<div class="espace"></div>
 
 <div class="formContainer">
     <div class="wrapper">
@@ -91,6 +92,8 @@ use Models\Database; ?>
             $dbh = Database::createDBConnection();
             Annonce::fetchSauv($dbh);
         }
+
+
         ?>
     </body>
 
