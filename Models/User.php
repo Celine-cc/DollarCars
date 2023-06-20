@@ -6,7 +6,7 @@ include_once __DIR__ . "/../Models/Database.php";
 
 use Models\Database;
 use PDO;
-
+use SessionHandler;
 
 class User
 {
@@ -121,7 +121,6 @@ class User
 
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
-                    session_start();
                     $_SESSION['email'] = $this->email;
                     header("Refresh:0; url=indexHome.php");
                 } else {
@@ -135,10 +134,10 @@ class User
 
     public static function deconnexion()
     {
-        session_register_shutdown();
+        session_start();
+        session_destroy();
         echo "<script>alert(\"Vous êtes bien déconnecté.\")</script>";
         header("Refresh:0; url=indexHome.php");
-        exit;
     }
 }
 ?>

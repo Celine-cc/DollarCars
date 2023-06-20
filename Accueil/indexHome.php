@@ -20,7 +20,9 @@ use Models\Database; ?>
 <header>
     <menu>
         <?php
-        if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+        var_dump($_SESSION);
+        if (count($_SESSION) == 0) {
         ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
             <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
         <?php } else {
@@ -70,7 +72,7 @@ use Models\Database; ?>
 
             $dbh = Database::createDBConnection();
             $publiAnnonce = new Annonce(
-                date("d-m-Y"),
+                date("Y-m-d"),
                 $_POST["dateFin"],
                 $_POST["prixReserve"],
                 $_POST["marque"],
