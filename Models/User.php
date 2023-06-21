@@ -121,7 +121,7 @@ class User
 
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
-                    $_SESSION['email'] = $this->email;
+                    $_SESSION['userId'] = $this->id;
                     header("Refresh:0; url=indexHome.php");
                 } else {
                     echo "<div class=\"messerror\" ><span>Mot de passe / Email incorrect.</span>
@@ -132,6 +132,56 @@ class User
         }
     }
 
+    public function modifProfil($dbh){
+        $requery = $dbh->prepare("SELECT * FROM users ");
+        $requery->execute();
+
+        $profil = [];
+
+        if (is_a($requery, "PDOStatement")) {
+            $sauvegarde = $requery->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($sauvegarde as $sauv) {
+                array_push($profil, new Annonce(
+                    $sauv['id'],
+                    $sauv['dateDebut'],
+                    $sauv['dateFin'],
+                    $sauv['prixReserve'],
+                    $sauv['marque'],
+                    $sauv['modele'],
+                    $sauv['puissance'],
+                    $sauv['annee'],
+                    $sauv['description'],
+                    $dbh
+                ));
+            }
+            foreach ($profil as $key => $value) { ?>
+                <div class="publiannonce">
+
+                    <h1><?php echo "Annonce " . $value->getId() ?> </h1>
+
+                    <!-- Ne mettre en affichage de l'acceuil uniquement le prix et le model,
+                le detail sera affiché en deuxième page -->
+                    <!-- <p><?php //echo "Disponible depuis : " . $value->getDateDebut() 
+                            ?></p> -->
+                    <p><?php echo "Disponible jusqu'au : " . $value->getDateFin() ?></p>
+                    <p><?php echo "Prix de réserve : " . $value->getPrix() . " €" ?></p>
+                    <p><?php echo "Marque : " . $value->getMarque() ?></p>
+                    <!-- <p><?php //echo "Modèle : " . $value->getModele() 
+                            ?></p> -->
+                    <!-- <p><?php //echo "Puissance : " . $value->getPuissance() . " CV" 
+                            ?></p> -->
+                    <!-- <p><?php //echo "Année : " . $value->getAnnee() 
+                            ?></p> -->
+                    <!-- <p><?php //echo $value->getDescription() 
+                            ?></p> -->
+                </div>
+                <?php
+
+            } 
+    }
+
+    
+
     public static function deconnexion()
     {
         session_start();
@@ -140,17 +190,3 @@ class User
         header("Refresh:0; url=indexHome.php");
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <u> User</u></title>
-    <link rel="stylesheet" href="../Style/User.css" />
-</head>
-
-<body></body>
-
-</html>

@@ -42,17 +42,17 @@ class Encherir
 
     public function insert()
     {
-        $dbh = Database::createDBConnection();
+        $this->dbh = Database::createDBConnection();
         $query = $this->dbh->prepare("INSERT INTO encherir (userId, annonceId, enchere, date_enchere) VALUES (?,?,?,?)");
         return $query->execute([$this->userId, $this->annonceId, $this->enchere, $this->date_enchere]);
     }
 
-    public static function fetchArticles($dbh)
+    public static function fetchEnchere($dbh)
     {
         $query = $dbh->prepare("SELECT * FROM encherir");
         $query->execute();
 
-        $auctions = [];
+        $encheres = [];
 
         if (is_a($query, "PDOStatement")) {
             $results = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -65,9 +65,21 @@ class Encherir
         return $encheres;
     }
 
-    // public function displayAuction()
-    // {
-    //     echo "<p> Author : " . $this->author . "</p>";
-    //     echo "<p> Résumé : " . $this->description . "</p>";
-    // }
+    public function getWinner($dbh)
+    {
+        $query = $dbh->prepare("SELECT users.nom, users.prenom FROM users INNER JOIN encherir ON users.id = encherir.userId");
+        $query->execute();
+
+        $encheres = [];
+
+        if (is_a($query, "PDOStatement")) {
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($results as $result) {
+                array_push($encheres, $result['nom'], $result['prenom']);
+            }
+        }
+
+        return $encheres;
+    }
 }
