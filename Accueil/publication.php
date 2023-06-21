@@ -7,9 +7,9 @@ use Models\Annonce;
 use Models\Database;
 
 
-
 $dbh = Database::createDBConnection();
-Annonce::fetchSauv($dbh);
+Annonce::afficherDetails($dbh);
+
 
 // $value 
 // Annonce::afficherDetails($value);

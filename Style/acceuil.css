@@ -83,3 +83,8 @@ body {
   border-top: 4px solid red;
   display: flex;
 }
+
+a {
+  color: black;
+  text-decoration: none;
+}
