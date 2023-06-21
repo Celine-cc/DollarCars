@@ -121,7 +121,7 @@ class User
 
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
-                    $_SESSION['userId'] = $this->id;
+                    $_SESSION['id'] = $this->id;
                     header("Refresh:0; url=indexHome.php");
                 } else {
                     echo "<div class=\"messerror\" ><span>Mot de passe / Email incorrect.</span>

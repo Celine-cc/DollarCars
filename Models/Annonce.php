@@ -182,13 +182,17 @@ class Annonce
             foreach ($detail as $key => $value) { ?>
                 <div class="publiannonce">
                     <h1>Annonce</h1>
-                    <p><?php echo $value->getDateFin() ?></p>
-                    <p><?php echo $value->getPrix() ?></p>
+                    <p><?php echo "Disponible jusqu'au : " . $value->getDateFin() ?></p>
+                    <p><?php echo "Prix : " . $value->getPrix() . " €" ?></p>
                     <strong><?php echo $value->getMarque() ?></strong>
-                    <p><?php echo $value->getModele() ?></p>
-                    <p><?php echo $value->getPuissance() ?></p>
-                    <p><?php echo $value->getAnnee() ?></p>
-                    <p><?php echo $value->getDescription() ?></p>
+                    <p><?php echo "Modèle : " . $value->getModele() ?></p>
+                    <p><?php echo "Puissance : " . $value->getPuissance() . " CV" ?></p>
+                    <p><?php echo "Année : " . $value->getAnnee() ?></p>
+                    <p><?php echo "Description : " . $value->getDescription() ?></p>
+                    <form action="publication.php" method="POST">
+                        <input type="number" name="enchere" id="enchere" placeholder="Montant">
+                        <input type="submit" value="Enchérir">
+                    </form>
                 </div>
         <?php }
         }
