@@ -118,10 +118,11 @@ class User
             $requery->bindValue(":email", $this->email, PDO::PARAM_STR);
             $requery->bindValue(":password", $this->password, PDO::PARAM_STR);
             $requeryExec = $requery->execute();
+            $fetchUser = $requery->fetchAll(PDO::FETCH_ASSOC);
 
             if ($requeryExec) {
                 if ($requery->rowCount() > 0) {
-                    $_SESSION['userId'] = $this->getId();
+                    $_SESSION['userId'] = $fetchUser[0]['id'];
                     header("Refresh:0; url=indexHome.php");
                 } else {
                     echo "<div class=\"messerror\" ><span>Mot de passe / Email incorrect.</span>
@@ -134,26 +135,9 @@ class User
 
     public function modifProfil($dbh)
     {
-        var_dump($_SESSION);
         $id = $_SESSION['userId'];
-        $requery = $dbh->prepare("UPDATE nom, prenom, email, password FROM users VALUES (?,?,?,?) WHERE user.id = $id ");
+        $requery = $dbh->prepare("UPDATE nom, prenom, email, password FROM users VALUES (?,?,?,?) WHERE users.id = $id ");
         $requery->execute([$this->nom, $this->prenom, $this->email, $this->password]);
-
-        $profil = [];
-
-        if (is_a($requery, "PDOStatement")) {
-            $sauvegarde = $requery->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($sauvegarde as $sauv) {
-                array_push($profil, new User(
-                    $sauv['id'],
-                    $sauv['nom'],
-                    $sauv['prenom'],
-                    $sauv['email'],
-                    $sauv['password'],
-                    $dbh
-                ));
-            }
-        }
     }
 
 

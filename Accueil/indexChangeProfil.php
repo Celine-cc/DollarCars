@@ -22,21 +22,21 @@
     </header>
 
     <div class="formWrapper">
-        
+
         <h1> PROFIL</h1>
         <h3>Modification de votre profil utilisateur</h3>
-      
-        <form action="/DollarCars/Accueil/indexChangeProfil.php" method="POST" class="formprofil">
+
+        <form action="indexChangeProfil.php" method="POST" class="formprofil">
             <input type="text" name="nom" placeholder="Nom" required />
-            <input type="text" name="prenom" placeholder="Prénom" required /> 
-            <input type="text" name="email" placeholder="Email" required /> 
-            <input type="text" name="password" placeholder="Mot-de-passe" required />   
-        
-        <div class="allbtn">
-            <button type="submit" value="Connection" name="modif">Modifier mon profil</button>
-           
-        </div>
-    </form>
+            <input type="text" name="prenom" placeholder="Prénom" required />
+            <input type="text" name="email" placeholder="Email" required />
+            <input type="text" name="password" placeholder="Mot-de-passe" required />
+
+            <div class="allbtn">
+                <button type="submit" value="Connection" name="modif">Modifier mon profil</button>
+
+            </div>
+        </form>
     </div>
 
 
@@ -47,10 +47,10 @@
             <span> 📞 06.00.34.34.54</span>
             <span> 📩 $Cars@societe$Cars.fr</span>
         </div>
-       
 
-</footer>
-  
+
+    </footer>
+
 </body>
 
 </html>
@@ -77,5 +77,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
-
