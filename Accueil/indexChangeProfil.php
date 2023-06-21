@@ -23,7 +23,7 @@
 
     <div class="formWrapper">
         
-        <h1> Profil</h1>
+        <h1> PROFIL</h1>
         <h3>Modification de votre profil utilisateur</h3>
       
         <form action="/DollarCars/Accueil/indexChangeProfil.php" method="POST" class="formprofil">
@@ -40,20 +40,41 @@
 
 
     <footer>
-
-
-        <h4>Pour tout renseignement complémentaire contactez-nous :</h4>
+        <h4>Pour tout renseignement complémentaire contactez-nous: </h4>
         <div>
-            <span>📮 123 Bocal, 06000 Nice</span>
-            <span>📞 06.00.34.34.54</span>
-            <span>📩 $Cars@societe$Cars.fr</span>
+            <span> 📮 123 Bocal, 06000 Nice</span>
+            <span> 📞 06.00.34.34.54</span>
+            <span> 📩 $Cars@societe$Cars.fr</span>
         </div>
        
 
 </footer>
   
- 
-
 </body>
 
 </html>
+
+<?php
+
+session_start();
+include_once __DIR__ . "/../Models/User.php";
+
+use Models\User;
+use Models\Database;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $connected = new User(
+        null,
+        $_POST["nom"],
+        $_POST["prenom"],
+        $_POST["email"],
+        $_POST["password"],
+        $dbh = Database::createDBConnection(),
+    );
+
+    $connected->modifProfil($dbh);
+}
+
+?>
+
+
