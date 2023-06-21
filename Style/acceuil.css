@@ -1,11 +1,12 @@
 body {
   background-image: url(https://www.h2-mobile.fr/img/post-h2/hyundai-nexo-record-autonomie_151119.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: georgia;
   height: 1000px;
   color: white;
-  background-color: #000;
+  display: flex;
+  flex-direction: column;
 }
 
 .fix {
@@ -17,8 +18,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 6px #000;
   color: rgba(0, 0, 0, 0.43);
+  box-shadow: 01 01 150px #000;
   right: 5%;
 }
 
@@ -73,6 +74,7 @@ body {
 }
 
 .publiannonce {
+  z-index: 7;
   flex-direction: column;
   width: 20%;
   margin-bottom: 5rem;
@@ -82,4 +84,5 @@ body {
   border-radius: 10px;
   border-top: 4px solid red;
   display: flex;
+  box-shadow: 01 01 150px #000;
 }
