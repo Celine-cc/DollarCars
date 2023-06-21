@@ -1,3 +1,10 @@
+body{
+    background-color: rgb(32, 31, 31);
+
+}
+
+
+
 .imgroute{
     float: left;
     height: 177%;
@@ -44,7 +51,7 @@ menu{
     margin-left: 139%;
 }
 .amenu:hover {
-    color: #0077ff;
+    color: #ef1f0c;
 }
   
 .amenu2{
@@ -55,7 +62,7 @@ menu{
     text-decoration: none;
 }
 .amenu2:hover {
-    color: #0077ff;
+    color: #ef1f0c;
 }
 h2 {
     color: rgb(221, 174, 22);
