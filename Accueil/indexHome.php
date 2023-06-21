@@ -1,11 +1,3 @@
-<?php
-
-include_once __DIR__ . "/../Models/Encherir.php";
-include_once __DIR__ . "/../Models/Annonce.php";
-
-use Models\Annonce;
-use Models\Database; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +8,13 @@ use Models\Database; ?>
     <link rel="stylesheet" href="../Style/acceuil.css?t=<? echo time(); ?>" />
 </head>
 
+<?php
 
+include_once __DIR__ . "/../Models/Encherir.php";
+include_once __DIR__ . "/../Models/Annonce.php";
+
+use Models\Annonce;
+use Models\Database; ?>
 <header>
     <menu>
         <?php
@@ -28,10 +26,9 @@ use Models\Database; ?>
         <?php } else {
             Annonce::buttonConnect();
         ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
-
+            <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
         <?php }
         ?>
-        <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
     </menu>
 
     <h1>
@@ -43,6 +40,7 @@ use Models\Database; ?>
 <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
     <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
 </p>
+<div class="espace"></div>
 
 <div class="formContainer">
     <div class="wrapper">
@@ -72,6 +70,7 @@ use Models\Database; ?>
 
             $dbh = Database::createDBConnection();
             $publiAnnonce = new Annonce(
+                null,
                 date("Y-m-d"),
                 $_POST["dateFin"],
                 $_POST["prixReserve"],
@@ -90,6 +89,8 @@ use Models\Database; ?>
             $dbh = Database::createDBConnection();
             Annonce::fetchSauv($dbh);
         }
+
+
         ?>
     </body>
 
