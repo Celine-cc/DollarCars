@@ -16,30 +16,52 @@ include_once __DIR__ . "/../Models/Annonce.php";
 use Models\Annonce;
 use Models\Database; ?>
 <header>
-    <menu>
-        <?php
-        session_start();
-        if (count($_SESSION) == 0) {
-            Annonce::buttonConnect();
-        ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
-            <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
-        <?php } else {
-            Annonce::buttonConnect();
-        ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
-            <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
-        <?php }
-        ?>
-    </menu>
+    <img src="../Style/img/Logo$Cars.png">
 
-    <h1>
-        <strong><i>Dollar Cars $</i></strong>
-    </h1>
+    <div class="entete">
+
+        <div class="titre">
+
+            <h1>
+                <strong><i>Dollar Cars $</i></strong>
+            </h1>
+            <p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
+                <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
+            </p>
+        </div>
+
+        <div class="cars">
+        </div>
+
+        <div class="menu">
+            <menu>
+
+                <?php
+                session_start();
+                if (count($_SESSION) == 0) {
+                    Annonce::buttonConnect();
+                ?><button class="button" onclick='location.href="indexLogin.php"'>Login</button>
+                    <button class="button" onclick='location.href="indexRegister.php"'>Register</button>
+
+                <?php } else {
+                    Annonce::buttonConnect();
+                ?> <button class="button" onclick='location.href="indexDeconnexion.php"'>Déconnexion</button>
+
+                    <button class="button" onclick='location.href="indexChangeProfil.php"'>Profil</button>
+                <?php }
+                ?>
+            </menu>
+        </div>
+
+    </div>
+
+
+
+
 
 </header>
 
-<p>Site d'enchères en ligne. Vendez ici votre voiture à prix gagnant !
-    <br>Dollar Cars le premier site d'annonce en ligne de la region dollar.
-</p>
+
 <div class="espace"></div>
 
 <div class="formContainer">
