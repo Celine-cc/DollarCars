@@ -2,7 +2,6 @@
 
 namespace Models;
 
-include_once __DIR__ . "/../Accueil/indexHome.php";
 include_once __DIR__ . "/../models/Database.php";
 
 use PDO;
