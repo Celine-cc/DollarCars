@@ -31,11 +31,12 @@
             <input type="text" name="prenom" placeholder="Prénom" required /> 
             <input type="text" name="email" placeholder="Email" required /> 
             <input type="text" name="password" placeholder="Mot-de-passe" required />   
-        </form>
+        
         <div class="allbtn">
-            <button type="submit" value="Connection">Modifier mon profil</button>
-            <button type="submit" value="Connection">Annuler</button>
+            <button type="submit" value="Connection" name="modif">Modifier mon profil</button>
+           
         </div>
+    </form>
     </div>
 
 
