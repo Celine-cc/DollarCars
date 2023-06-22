@@ -190,8 +190,8 @@ class Annonce
                     <p><?php echo "Année : " . $value->getAnnee() ?></p>
                     <p><?php echo "Description : " . $value->getDescription() ?></p>
                     <form action="publication.php?id=<?php echo $id ?>" method="POST">
-                        <input type="number" name="enchere" placeholder="Montant">
-                        <input type="submit" value="Enchérir">
+                        <input class="i1" type="number" name="enchere" placeholder="Montant">
+                        <input class="i2" type="submit" value="Enchérir">
                     </form>
                 </div>
         <?php }
@@ -258,3 +258,4 @@ class Annonce
         }
     }
 }
+?>
