@@ -136,7 +136,7 @@ class User
     public function modifProfil($dbh)
     {
         $id = $_SESSION['userId'];
-        $requery = $dbh->prepare("UPDATE nom, prenom, email, password FROM users VALUES (?,?,?,?) WHERE users.id = $id ");
+        $requery = $dbh->prepare("UPDATE users SET nom = ?, prenom = ?, email = ?, password = ? WHERE users.id = $id ");
         $requery->execute([$this->nom, $this->prenom, $this->email, $this->password]);
     }
 
