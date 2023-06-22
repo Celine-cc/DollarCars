@@ -109,3 +109,6 @@ button {
   display: flex-start;
   position: fixed;
 }
+img{
+  width: 20rem;
+}
