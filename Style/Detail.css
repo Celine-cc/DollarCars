@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(79, 79, 79);
+   
+}
+menu {
+    display: flex;
+    align-items: baseline;
+    gap: 76%;
+    margin: 0;
+
+}
+img {
+    width: 38rem;
+}
+a{
+    color: rgb(8, 228, 9);
+    border-style: none;
+    font-size: 28px;
+    font-weight: bolder;
+    text-decoration: none;
+   
+}
+a:hover {
+    color: #ef1f0c;
+}
+h1 {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 3rem;
+    color:  rgb(8, 228, 9);
+}
+.detailannonce{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(52, 51, 51);
+    border-radius: 14px;
+    border-style: solid;
+    border-color: rgb(8, 179, 8);
+    padding-left: 13%;
+    padding-right: 13%;
+    padding-top: 2%;
+}
+.dispo{
+    color: cornsilk;
+    font-size: 30px;
+    margin: 0;
+    font-weight: bold;
+}
+.description {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+p{
+    color:cornsilk;
+    font-size: 18px;
+}
+.prix{
+    font-size: 23px;
+    font-weight: bold; 
+}
+.containerdes{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+   
+}
+.des{
+    font-style: italic;
+}
+input{
+    background-color: rgb(8, 179, 8);
+    
+    color:rgb(52, 51, 51);
+    
+    
+}
+.button{
+    padding-top: 2%;
+    display: flex;
+    align-items: baseline;
+    gap: 6%;
+}
+.i1{
+    width: 149px;
+    height: 30px;
+    font-size: 19px;
+    border: none;
+    border-radius: 5px;
+}
+.i2{
+    width: 115px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+.i2{
+    font-size: 13px;
+    background-color:  rgb(52, 51, 51) ;
+    border: 2px solid rgb(127, 199, 45);
+    border-radius: 10px;
+    -webkit-transition: all .10s ease-in-out;
+    transition: all .10s ease-in-out;
+    color:cornsilk;
+  }
+.i2:hover {
+    box-shadow: 0 0 10px 0 rgb(127, 199, 45) inset, 0 0 20px 2px rgb(127, 199, 45);
+    border: 3px solid rgb(127, 199, 45);
+  }
