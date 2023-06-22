@@ -189,8 +189,8 @@ class Annonce
                     <p><?php echo "Puissance : " . $value->getPuissance() . " CV" ?></p>
                     <p><?php echo "Année : " . $value->getAnnee() ?></p>
                     <p><?php echo "Description : " . $value->getDescription() ?></p>
-                    <form action="publication.php" method="POST">
-                        <input type="number" name="enchere" id="enchere" placeholder="Montant">
+                    <form action="publication.php?id=<?php echo $id ?>" method="POST">
+                        <input type="number" name="enchere" placeholder="Montant">
                         <input type="submit" value="Enchérir">
                     </form>
                 </div>

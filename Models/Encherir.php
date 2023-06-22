@@ -9,9 +9,9 @@ use PDO;
 
 class Encherir
 {
-    protected int $id;
-    protected int $userId;
-    protected int $annonceId;
+    protected $id;
+    protected $userId;
+    protected $annonceId;
     protected float $enchere;
     protected string $date_enchere;
     protected $dbh;
@@ -42,12 +42,27 @@ class Encherir
 
     public function insert()
     {
-        $this->dbh = Database::createDBConnection();
-        $query = $this->dbh->prepare("INSERT INTO encherir (userId, annonceId, enchere, date_enchere) VALUES (?,?,?,?)");
-        return $query->execute([$this->userId, $this->annonceId, $this->enchere, $this->date_enchere]);
+        $dbh = Database::createDBConnection();
+        $query = $dbh->prepare("SELECT * FROM `annonces` WHERE `id` = ? ");
+        $query->execute([$this->annonceId]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result[0]['dateFin'] > date("Y-m-d")) {
+            if ($result[0]['prixReserve'] < $this->enchere) {
+                $query = $this->dbh->prepare("INSERT INTO encherir (userId, annonceId, enchere, date_enchere) VALUES (?,?,?,?)");
+                $query->execute([$this->userId, $this->annonceId, $this->enchere, $this->date_enchere]);
+
+                $queryUpdate = $this->dbh->prepare("UPDATE annonces SET prixReserve = ? WHERE id = ?");
+                $queryUpdate->execute([$this->enchere, $this->annonceId]);
+            } else {
+                echo "<p> Veuillez saisir un montant plus élevé </p>";
+            }
+        } else {
+            echo "<p> Vous ne pouvez plus enchérir sur cette annonce. </p>";
+        }
     }
 
-    public static function fetchEnchere($dbh)
+    public function fetchEnchere($dbh)
     {
         $query = $dbh->prepare("SELECT * FROM encherir");
         $query->execute();
@@ -62,7 +77,13 @@ class Encherir
             }
         }
 
-        return $encheres;
+        foreach ($encheres as $key => $enchere) { ?>
+            <div class="publiannonce">
+                <h1>Encheres</h1>
+                <p><?php echo "Montant dernière enchère : " . $enchere->__get('enchere') . " €" ?></p>
+                <p><?php echo "Date de la dernière enchère : " . $enchere->__get('date_enchere') ?></p>
+            </div>
+            <?php }
     }
 
     public function getWinner($dbh)
@@ -80,6 +101,12 @@ class Encherir
             }
         }
 
-        return $encheres;
+        if ($this->date_enchere < date("Y-m-d")) {
+            foreach ($encheres as $key => $enchere) { ?>
+                <div class="enchere">
+                    <p><?php echo "Gagnant : " . $enchere['nom'] . $enchere['prenom'] ?></p>
+                </div>
+<?php }
+        }
     }
 }
